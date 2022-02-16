@@ -1,24 +1,13 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+The main project repository:
+https://github.com/aleksasha-o/watch-grabber
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Scrapping sites:
+https://shop.hodinkee.com/
+https://www.crownandcaliber.com/
+https://www.chrono24.com/
+https://www.bobswatches.com/
+https://www.chronext.com/buy
+https://www.watchfinder.co.uk/
+https://www.thewatchbox.com/ch/en/
