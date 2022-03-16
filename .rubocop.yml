@@ -17,3 +17,42 @@ Style/Documentation:
 
 Rails/FilePath:
   EnforcedStyle: arguments
+
+# === RSPEC ===================================================================================== #
+RSpec/ContextWording:
+  Enabled: false
+
+RSpec/DescribeClass:
+  Exclude:
+    - 'spec/features/*'
+
+RSpec/ExampleLength:
+  Enabled: false
+
+RSpec/FilePath:
+  Enabled: true
+  IgnoreMethods: true
+
+RSpec/ImplicitSubject:
+  EnforcedStyle: single_line_only
+
+RSpec/LetSetup:
+  Enabled: true
+
+RSpec/MessageSpies:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Max: 3
+
+RSpec/NamedSubject:
+  Enabled: false
+
+RSpec/NestedGroups:
+  Enabled: false
+
+RSpec/SubjectStub:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false

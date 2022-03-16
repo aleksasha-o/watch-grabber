@@ -20,8 +20,8 @@ ActiveRecord::Schema.define(version: 2022_03_15_135723) do
     t.string "type", null: false
     t.string "brand"
     t.string "model"
-    t.decimal "price", precision: 10, scale: 2
-    t.string "currency"
+    t.decimal "price", precision: 10, scale: 2, null: false
+    t.string "currency", null: false
     t.text "dial_color"
     t.text "case_material"
     t.text "case_dimensions"
