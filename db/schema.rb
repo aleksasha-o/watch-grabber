@@ -13,9 +13,11 @@
 ActiveRecord::Schema.define(version: 2022_03_15_135723) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "hstore"
   enable_extension "plpgsql"
 
   create_table "items", force: :cascade do |t|
+    t.string "type", null: false
     t.string "brand"
     t.string "model"
     t.decimal "price", precision: 10, scale: 2
@@ -25,26 +27,7 @@ ActiveRecord::Schema.define(version: 2022_03_15_135723) do
     t.text "case_dimensions"
     t.text "bracelet_material"
     t.text "movement_type"
-    t.text "box_and_papers"
-    t.integer "year"
-    t.string "gender"
-    t.text "condition"
-    t.string "regular_price"
-    t.text "papers"
-    t.text "box"
-    t.text "crystal"
-    t.text "caseback"
-    t.text "power_reserve"
-    t.text "lug_width"
-    t.text "bezel_material"
-    t.text "manual"
-    t.text "max_wrist_size"
-    t.text "case_thickness"
-    t.text "water_resistance"
-    t.text "reference_number"
-    t.text "functions"
-    t.text "manufactured"
-    t.text "lume"
+    t.hstore "features"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
