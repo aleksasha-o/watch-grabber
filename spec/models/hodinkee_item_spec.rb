@@ -2,58 +2,58 @@
 
 require 'rails_helper'
 
-RSpec.describe HodinkeeItem, type: :model do
-  context 'validations' do
+describe HodinkeeItem, type: :model do
+  describe 'validations' do
     it 'validates :crystal length' do
-      expect(subject)
+      is_expected
         .to validate_length_of(:crystal)
         .is_at_least(described_class::MIN_FEATURE_LENGTH)
     end
 
     it 'validates :water_resistance length' do
-      expect(subject)
+      is_expected
         .to validate_length_of(:water_resistance)
         .is_at_least(described_class::MIN_FEATURE_LENGTH)
     end
 
     it 'validates :reference_number length' do
-      expect(subject)
+      is_expected
         .to validate_length_of(:reference_number)
         .is_at_least(described_class::MIN_FEATURE_LENGTH)
     end
 
     it 'validates :functions length' do
-      expect(subject)
+      is_expected
         .to validate_length_of(:functions)
         .is_at_least(described_class::MIN_FEATURE_LENGTH)
     end
 
     it 'validates :caseback length' do
-      expect(subject)
+      is_expected
         .to validate_length_of(:caseback)
         .is_at_least(described_class::MIN_FEATURE_LENGTH)
     end
 
     it 'validates :power_reserve length' do
-      expect(subject)
+      is_expected
         .to validate_length_of(:power_reserve)
         .is_at_least(described_class::MIN_FEATURE_LENGTH)
     end
 
     it 'validates :manufactured length' do
-      expect(subject)
+      is_expected
         .to validate_length_of(:manufactured)
         .is_at_least(described_class::MIN_FEATURE_LENGTH)
     end
 
     it 'validates :lug_width length' do
-      expect(subject)
+      is_expected
         .to validate_length_of(:lug_width)
         .is_at_least(described_class::MIN_FEATURE_LENGTH)
     end
 
     it 'validates :lume length' do
-      expect(subject)
+      is_expected
         .to validate_length_of(:lume)
         .is_at_least(described_class::MIN_FEATURE_LENGTH)
     end

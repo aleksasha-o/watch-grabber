@@ -2,11 +2,10 @@
 
 class Item < ApplicationRecord
   enum currency: {
-    usd: USD = 'USD',
-    eur: EUR = 'EUR',
-    uah: UAH = 'UAH'
+    usd: 'usd',
+    eur: 'eur',
+    uah: 'uah'
   }, _prefix: true
-  validates :type, :price, presence: true
+  validates :type, :price, :currency, presence: true
   validates :price, numericality: { greater_than: 0 }
-  validates :currency, presence: true, if: :price
 end

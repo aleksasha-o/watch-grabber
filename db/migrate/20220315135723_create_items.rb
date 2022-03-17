@@ -8,7 +8,6 @@ class CreateItems < ActiveRecord::Migration[6.0]
       t.string  :brand
       t.string  :model
       t.decimal :price, null: false, precision: 10, scale: 2
-      t.string  :currency, null: false
       t.text    :dial_color
       t.text    :case_material
       t.text    :case_dimensions

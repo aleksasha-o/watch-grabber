@@ -2,82 +2,82 @@
 
 require 'rails_helper'
 
-RSpec.describe CrownandcaliberItem, type: :model do
-  context 'validations' do
+describe CrownandcaliberItem, type: :model do
+  describe 'validations' do
     it 'validates :papers length' do
-      expect(subject)
+      is_expected
         .to validate_length_of(:papers)
         .is_at_least(described_class::MIN_FEATURE_LENGTH)
     end
 
     it 'validates :box length' do
-      expect(subject)
+      is_expected
         .to validate_length_of(:box)
         .is_at_least(described_class::MIN_FEATURE_LENGTH)
     end
 
     it 'validates :year length' do
-      expect(subject)
+      is_expected
         .to validate_length_of(:year)
         .is_at_least(described_class::MIN_FEATURE_LENGTH)
     end
 
     it 'validates :gender length' do
-      expect(subject)
+      is_expected
         .to validate_length_of(:gender)
         .is_at_least(described_class::MIN_FEATURE_LENGTH)
     end
 
     it 'validates :crystal length' do
-      expect(subject)
+      is_expected
         .to validate_length_of(:crystal)
         .is_at_least(described_class::MIN_FEATURE_LENGTH)
     end
 
     it 'validates :condition length' do
-      expect(subject)
+      is_expected
         .to validate_length_of(:condition)
         .is_at_least(described_class::MIN_FEATURE_LENGTH)
     end
 
     it 'validates :caseback length' do
-      expect(subject)
+      is_expected
         .to validate_length_of(:caseback)
         .is_at_least(described_class::MIN_FEATURE_LENGTH)
     end
 
     it 'validates :power_reserve length' do
-      expect(subject)
+      is_expected
         .to validate_length_of(:power_reserve)
         .is_at_least(described_class::MIN_FEATURE_LENGTH)
     end
 
     it 'validates :lug_width length' do
-      expect(subject)
+      is_expected
         .to validate_length_of(:lug_width)
         .is_at_least(described_class::MIN_FEATURE_LENGTH)
     end
 
     it 'validates :bezel_material length' do
-      expect(subject)
+      is_expected
         .to validate_length_of(:bezel_material)
         .is_at_least(described_class::MIN_FEATURE_LENGTH)
     end
 
     it 'validates :manual length' do
-      expect(subject)
+      is_expected
         .to validate_length_of(:manual)
         .is_at_least(described_class::MIN_FEATURE_LENGTH)
     end
 
     it 'validates :max_wrist_size length' do
-      expect(subject)
+      is_expected
         .to validate_length_of(:max_wrist_size)
         .is_at_least(described_class::MIN_FEATURE_LENGTH)
     end
 
     it 'validates :case_thickness length' do
-      expect(subject)
+      is_expected
         .to validate_length_of(:case_thickness)
         .is_at_least(described_class::MIN_FEATURE_LENGTH)
     end

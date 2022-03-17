@@ -11,6 +11,7 @@ AllCops:
     - 'db/**/*'
     - 'tmp/**/*'
     - 'vendor/**/*'
+    - 'schema.rb'
 
 Style/Documentation:
   Enabled: false
@@ -34,7 +35,7 @@ RSpec/FilePath:
   IgnoreMethods: true
 
 RSpec/ImplicitSubject:
-  EnforcedStyle: single_line_only
+  Enabled: false
 
 RSpec/LetSetup:
   Enabled: true
@@ -55,4 +56,7 @@ RSpec/SubjectStub:
   Enabled: false
 
 Metrics/BlockLength:
+  Enabled: false
+
+Lint/ShadowingOuterLocalVariable:
   Enabled: false

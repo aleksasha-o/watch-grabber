@@ -45,6 +45,9 @@ GEM
     activerecord (6.0.4.6)
       activemodel (= 6.0.4.6)
       activesupport (= 6.0.4.6)
+    activerecord-postgres_enum (2.0.1)
+      activerecord (>= 5.2)
+      pg
     activestorage (6.0.4.6)
       actionpack (= 6.0.4.6)
       activejob (= 6.0.4.6)
@@ -247,6 +250,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  activerecord-postgres_enum
   bootsnap (>= 1.4.2)
   byebug
   capybara (>= 2.15)
