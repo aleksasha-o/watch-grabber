@@ -1,0 +1,62 @@
+require:
+  - rubocop-rails
+  - rubocop-rspec
+
+AllCops:
+  TargetRubyVersion: 3.0.2
+  NewCops: enable
+  Exclude:
+    - '.bundle/**/*'
+    - 'bin/*'
+    - 'db/**/*'
+    - 'tmp/**/*'
+    - 'vendor/**/*'
+    - 'schema.rb'
+
+Style/Documentation:
+  Enabled: false
+
+Rails/FilePath:
+  EnforcedStyle: arguments
+
+# === RSPEC ===================================================================================== #
+RSpec/ContextWording:
+  Enabled: false
+
+RSpec/DescribeClass:
+  Exclude:
+    - 'spec/features/*'
+
+RSpec/ExampleLength:
+  Enabled: false
+
+RSpec/FilePath:
+  Enabled: true
+  IgnoreMethods: true
+
+RSpec/ImplicitSubject:
+  Enabled: false
+
+RSpec/LetSetup:
+  Enabled: true
+
+RSpec/MessageSpies:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Max: 3
+
+RSpec/NamedSubject:
+  Enabled: false
+
+RSpec/NestedGroups:
+  Enabled: false
+
+RSpec/SubjectStub:
+  Enabled: false
+
+Metrics/BlockLength:
+  Enabled: false
+
+Lint/ShadowingOuterLocalVariable:
+  Enabled: false
