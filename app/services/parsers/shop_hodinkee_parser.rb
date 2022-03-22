@@ -21,7 +21,7 @@ module Parsers
         crystal:          features[:crystal],
         water_resistance: features[RESISTANCE],
         reference_number: features[:reference],
-        functions:        features[:functions],
+        functions:        function,
         caseback:         features[:caseback],
         power_reserve:    features[POWER],
         manufactured:     features[:manufactured],
@@ -60,6 +60,10 @@ module Parsers
 
     def movement_type
       features[:caliber]
+    end
+
+    def function
+      features[:functions] || features[:function]
     end
 
     def features

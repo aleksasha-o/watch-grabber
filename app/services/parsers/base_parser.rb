@@ -36,7 +36,7 @@ module Parsers
     end
 
     def next_page?
-      parse_html(self.class::NEXT_PAGE)[0]
+      parse_html(self.class::NEXT_PAGE)[0].present?
     end
 
     private

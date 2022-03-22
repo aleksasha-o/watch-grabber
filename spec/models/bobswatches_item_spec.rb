@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'rails_helper'
-
 describe BobswatchesItem, type: :model do
   describe 'validations' do
     it 'validates :box_and_papers length' do

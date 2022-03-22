@@ -72,3 +72,6 @@ Metrics/CyclomaticComplexity:
 
 Metrics/PerceivedComplexity:
   Enabled: false
+
+RSpec/AnyInstance:
+  Enabled: false

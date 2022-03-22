@@ -26,7 +26,7 @@ module Parsers
       {
         papers:         features[:papers],
         box:            features[:box],
-        year:           features[:papers],
+        year:           features[:year],
         gender:         features[:gender],
         crystal:        features[:crystal],
         condition:      features[:condition],

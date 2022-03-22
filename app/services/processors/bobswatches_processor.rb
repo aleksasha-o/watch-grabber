@@ -7,8 +7,8 @@ module Processors
       ITEM = '.price'
     ].freeze
 
-    HOST = 'https://www.bobswatches.com/'
-    PAGINATION_SELECTOR = 'shop?page='
+    HOST = 'https://www.bobswatches.com'
+    PAGINATION_SELECTOR = '/shop?page='
 
     private
 

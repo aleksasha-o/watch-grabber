@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'rails_helper'
-
 describe CrownandcaliberItem, type: :model do
   describe 'validations' do
     it 'validates :papers length' do

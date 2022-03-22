@@ -8,8 +8,8 @@ module Processors
     ].freeze
 
     PROTOCOL = 'https'
-    HOST = 'www.crownandcaliber.com/'
-    PAGINATION_SELECTOR = 'collections/shop-for-watches?page='
+    HOST = 'www.crownandcaliber.com'
+    PAGINATION_SELECTOR = '/collections/shop-for-watches?page='
 
     private
 

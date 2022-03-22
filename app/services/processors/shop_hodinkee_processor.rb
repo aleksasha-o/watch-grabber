@@ -7,8 +7,8 @@ module Processors
       ITEM = '.vendor'
     ].freeze
 
-    HOST = 'https://shop.hodinkee.com/'
-    PAGINATION_SELECTOR = 'collections/watches?page='
+    HOST = 'https://shop.hodinkee.com'
+    PAGINATION_SELECTOR = '/collections/watches?page='
 
     private
 
