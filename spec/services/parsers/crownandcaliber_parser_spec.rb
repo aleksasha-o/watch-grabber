@@ -37,21 +37,15 @@ describe Parsers::CrownandcaliberParser do
     end
 
     describe '#additional_attributes' do
-      it 'works' do
-        expect(subject.additional_attributes).to eq(additional_attributes)
-      end
+      it { expect(subject.additional_attributes).to eq(additional_attributes) }
     end
 
     describe '#base_attributes' do
-      it 'works' do
-        expect(subject.base_attributes).to eq(base_attributes)
-      end
+      it { expect(subject.base_attributes).to eq(base_attributes) }
     end
 
     describe '#attributes' do
-      it 'works' do
-        expect(subject.attributes).to eq(base_attributes.merge!(additional_attributes))
-      end
+      it { expect(subject.attributes).to eq(base_attributes.merge!(additional_attributes)) }
     end
   end
 
@@ -65,22 +59,16 @@ describe Parsers::CrownandcaliberParser do
            //www.crownandcaliber.com/products/rolex-datejust-116200-10-10-rol-6fa5l3]
       end
 
-      it 'works' do
-        expect(subject.item_urls).to match_array(links)
-      end
+      it { expect(subject.item_urls).to match_array(links) }
     end
 
     describe '#next_page?' do
-      it 'works' do
-        expect(subject.next_page?).to be(true)
-      end
+      it { expect(subject.next_page?).to be(true) }
 
       describe 'when next page does not exist' do
         let(:file) { file_fixture('crownandcaliber_last_page.html').read }
 
-        it 'works' do
-          expect(subject.next_page?).to be(false)
-        end
+        it { expect(subject.next_page?).to be(false) }
       end
     end
   end

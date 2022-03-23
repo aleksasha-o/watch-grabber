@@ -11,36 +11,45 @@ describe Processors::CrownandcaliberProcessor do
 
       allow_any_instance_of(Browser)
         .to receive(:visit)
-        .with(url: 'https://www.crownandcaliber.com/collections/shop-for-watches?page=1', tag: '.card-title.ng-binding')
+        .with(url: 'https://www.crownandcaliber.com/collections/shop-for-watches?page=1',
+              tag: '.card-title.ng-binding')
         .and_return(file)
     end
 
-    it 'works' do
-      allow_any_instance_of(Browser)
-        .to receive(:visit)
-        .with(url: 'https://www.crownandcaliber.com/products/rolex-datejust-126334-10-10-rol-altzu5',
-              tag: '.vendor')
-        .and_return(item_file)
+    context 'on correct page' do
+      before do
+        allow_any_instance_of(Browser)
+          .to receive(:visit)
+          .with(url: 'https://www.crownandcaliber.com/products/rolex-datejust-126334-10-10-rol-altzu5',
+                tag: '.vendor')
+          .and_return(item_file)
 
-      subject.call
-      expect(created_item).to have_attributes(model:          'Datejust',
-                                              papers:         'Yes',
-                                              box:            'No',
-                                              gender:         'Men',
-                                              condition:      'Very Good',
-                                              bezel_material: 'Stainless Steel',
-                                              manual:         'No')
+        subject.call
+      end
+
+      it {
+        expect(created_item).to have_attributes(model:          'Datejust',
+                                                papers:         'Yes',
+                                                box:            'No',
+                                                gender:         'Men',
+                                                condition:      'Very Good',
+                                                bezel_material: 'Stainless Steel',
+                                                manual:         'No')
+      }
     end
 
-    it 'does not work with wrong page' do
-      allow_any_instance_of(Browser)
-        .to receive(:visit)
-        .with(url: 'https://www.crownandcaliber.com/products/rolex-datejust-126334-10-10-rol-altzu5',
-              tag: '.vendor')
-        .and_return(file)
+    context 'on wrong page' do
+      before do
+        allow_any_instance_of(Browser)
+          .to receive(:visit)
+          .with(url: 'https://www.crownandcaliber.com/products/rolex-datejust-126334-10-10-rol-altzu5',
+                tag: '.vendor')
+          .and_return(file)
 
-      subject.call
-      expect(created_item).to be_nil
+        subject.call
+      end
+
+      it { expect(created_item).to be_nil }
     end
   end
 end

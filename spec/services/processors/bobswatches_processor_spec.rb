@@ -15,29 +15,37 @@ describe Processors::BobswatchesProcessor do
         .and_return(file)
     end
 
-    it 'works' do
-      allow_any_instance_of(Browser)
-        .to receive(:visit)
-        .with(url: 'https://www.bobswatches.com/mens-rolex-gmt-master-ii-116710blnr.html',
-              tag: '.price')
-        .and_return(item_file)
+    context 'on correct page' do
+      before do
+        allow_any_instance_of(Browser)
+          .to receive(:visit)
+          .with(url: 'https://www.bobswatches.com/mens-rolex-gmt-master-ii-116710blnr.html',
+                tag: '.price')
+          .and_return(item_file)
 
-      subject.call
-      expect(created_item).to have_attributes(year:          '2021',
-                                              gender:        "Men's",
-                                              condition:     'Excellent',
-                                              regular_price: '$30,350.36')
+        subject.call
+      end
+
+      it {
+        expect(created_item).to have_attributes(year:          '2021',
+                                                gender:        "Men's",
+                                                condition:     'Excellent',
+                                                regular_price: '$30,350.36')
+      }
     end
 
-    it 'does not work with wrong page' do
-      allow_any_instance_of(Browser)
-        .to receive(:visit)
-        .with(url: 'https://www.bobswatches.com/shop?page=1',
-              tag: '.price')
-        .and_return(file)
+    context 'on wrong page' do
+      before do
+        allow_any_instance_of(Browser)
+          .to receive(:visit)
+          .with(url: 'https://www.bobswatches.com/shop?page=1',
+                tag: '.price')
+          .and_return(file)
 
-      subject.call
-      expect(created_item).to be_nil
+        subject.call
+      end
+
+      it { expect(created_item).to be_nil }
     end
   end
 end

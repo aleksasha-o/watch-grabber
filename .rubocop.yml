@@ -75,3 +75,6 @@ Metrics/PerceivedComplexity:
 
 RSpec/AnyInstance:
   Enabled: false
+
+RSpec/VerifiedDoubles:
+  Enabled: false

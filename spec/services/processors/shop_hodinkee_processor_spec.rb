@@ -15,38 +15,46 @@ describe Processors::ShopHodinkeeProcessor do
         .and_return(file)
     end
 
-    it 'works' do
-      allow_any_instance_of(Browser)
-        .to receive(:visit)
-        .with(url: 'https://shop.hodinkee.com/collections/watches/products/aquaracer-200-blue-dial-on-bracelet',
-              tag: '.vendor')
-        .and_return(item_file)
+    context 'on correct page' do
+      before do
+        allow_any_instance_of(Browser)
+          .to receive(:visit)
+          .with(url: 'https://shop.hodinkee.com/collections/watches/products/aquaracer-200-blue-dial-on-bracelet',
+                tag: '.vendor')
+          .and_return(item_file)
 
-      subject.call
-      expect(created_item).to have_attributes(dial_color:        'Blue',
-                                              case_material:     'Stainless steel with black hard coating',
-                                              case_dimensions:   '39.9mm diameter; 14.1mm thickness',
-                                              bracelet_material: 'Black silicone strap',
-                                              movement_type:     'Seiko, self-winding, 8L35',
-                                              crystal:           'Sapphire crystal',
-                                              water_resistance:  '200 meters',
-                                              reference_number:  'SLA043',
-                                              functions:         'Hours, minutes, seconds, date',
-                                              caseback:          'Stainless steel',
-                                              power_reserve:     '50 hours',
-                                              manufactured:      'Japan',
-                                              lume:              'Yes, LumiBrite')
+        subject.call
+      end
+
+      it {
+        expect(created_item).to have_attributes(dial_color:        'Blue',
+                                                case_material:     'Stainless steel with black hard coating',
+                                                case_dimensions:   '39.9mm diameter; 14.1mm thickness',
+                                                bracelet_material: 'Black silicone strap',
+                                                movement_type:     'Seiko, self-winding, 8L35',
+                                                crystal:           'Sapphire crystal',
+                                                water_resistance:  '200 meters',
+                                                reference_number:  'SLA043',
+                                                functions:         'Hours, minutes, seconds, date',
+                                                caseback:          'Stainless steel',
+                                                power_reserve:     '50 hours',
+                                                manufactured:      'Japan',
+                                                lume:              'Yes, LumiBrite')
+      }
     end
 
-    it 'does not work with wrong page' do
-      allow_any_instance_of(Browser)
-        .to receive(:visit)
-        .with(url: 'https://shop.hodinkee.com/collections/watches/products/aquaracer-200-blue-dial-on-bracelet',
-              tag: '.vendor')
-        .and_return(file)
+    context 'on wrong page' do
+      before do
+        allow_any_instance_of(Browser)
+          .to receive(:visit)
+          .with(url: 'https://shop.hodinkee.com/collections/watches/products/aquaracer-200-blue-dial-on-bracelet',
+                tag: '.vendor')
+          .and_return(file)
 
-      subject.call
-      expect(created_item).to be_nil
+        subject.call
+      end
+
+      it { expect(created_item).to be_nil }
     end
   end
 end
