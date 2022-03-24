@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'rails_helper'
-
 describe HodinkeeItem, type: :model do
   describe 'validations' do
     it 'validates :crystal length' do
