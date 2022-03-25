@@ -8,6 +8,7 @@ module Parsers
       BRAND         = '.vendor',
       MODEL         = '.main-product-name',
       PRICE         = '//*[@id="ProductPrice-product-template"]',
+      EXTERNAL_ID   = '.itemNo',
       FEATURES      = '.prod-specs div',
       DIAL          = :'dial color',
       CASE_MATERIAL = :'case material',
@@ -71,13 +72,17 @@ module Parsers
       features[:movement]
     end
 
+    def external_id
+      parse_content_by_tag(self.class::EXTERNAL_ID)[0]
+    end
+
     def features
-      parse_html(FEATURES)
-        .each { |item| item.children&.[](3)&.children&.[](1)&.remove }
-        .map(&:content)
-        .map { |str| str.split('- ', 2) }
-        .reject { |pair| pair.size < 2 }
-        .to_h { |key, value| [key&.strip&.downcase&.to_sym, value&.strip&.gsub("\n", '')&.gsub(SPACE_EXPRESSION, ' ')] }
+      @features ||= parse_html(FEATURES)
+                    .each { |item| item.children&.[](3)&.children&.[](1)&.remove }
+                    .map(&:content)
+                    .map { |str| str.split('- ', 2) }
+                    .reject { |pair| pair.size < 2 }
+                    .to_h { |key, value| [key&.strip&.downcase&.to_sym, value&.strip&.gsub("\n", '')&.gsub(SPACE_EXPRESSION, ' ')] }
     end
   end
 end

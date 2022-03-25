@@ -1,0 +1,24 @@
+<div class="navbar-fixed">
+  <nav class="pink lighten-3">
+    <div class="container nav-wrapper">
+      <%= image_pack_tag 'logo.png' %>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li>
+          <%= link_to processors_path do %>
+            <i class="material-icons left">slideshow</i>
+            <%= t('processors.nav') %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to items_path do %>
+            <i class="material-icons left">watch</i>
+            <%= t('items.nav') %>
+            <span class="new badge pink lighten-1" data-badge-caption="">
+              <%= @item_numbers %>
+            </span>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</div>

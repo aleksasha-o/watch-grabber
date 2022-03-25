@@ -1,33 +1,49 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at https://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  processors:
+    nav: Our Parsers
+    success: Process done
+    shop_hodinkee: > 
+      It’s been eight years since we launched our sister site – HODINKEE – as a living, breathing love
+      letter to the mechanical watches that we all admire so much.
+      <br><br>
+      Since then, what started as a personal project has turned into the leading voice in timepieces and the world 
+      in which they live. Our team of writers, photographers, and designers have travelled the globe in pursuit of 
+      not only the most interesting watches, but also the people who collect them, curate them, and most importantly, 
+      make them.
+      <br><br>
+      Along the way, we picked up an eye for the design and quality that you only find in products made 
+      the old fashioned way. The HODINKEE Shop is here to bring you what we’ve found in our travels – nothing 
+      but products designed in detail, crafted with care, meant to last, and worn by all of us on the team.
+      We hope you enjoy what you’ll find in the HODINKEE Shop as much as we do.
+    bobswatches: >
+      Bob's Watches is the World's First and only Pre-Owned Rolex Exchange where consumers can buy, sell,
+      and trade vintage and used Rolex watches at true fair market value. We openly publish the current buy and sell 
+      values for each Rolex model allowing us to serve as an online marketplace for buyers and sellers looking, 
+      quite simply, to get the best deal.
+      <br><br>
+      Unlike other companies, we specialize in used Rolex watches, including pre-owned, vintage and antique timepieces, 
+      and pride ourselves in obtaining the very best results possible for our customers. Our business philosophy is built 
+      on trust and integrity and in a very short time we have become the leading online destination for used Rolex watches 
+      and vintage Rolex expertise. And unlike other online watch companies, Bob’s carries an actual inventory of watches. 
+      Every watch on our site is in stock ready for sale. For more information about Bob's Watches, see our Wikipedia page.
+    crownandcaliber: >
+      Like many ideas, this one began over lunch. After hearing a friend lament his watch-selling
+      experience involving countless hours in the car, sketchy parking lot invitations, and one foreign prince scam, 
+      our CEO and Founder, Hamilton Powell, knew there had to be a better way to transact in this space. 
+      So, after a ton of research, Crown & Caliber began as a seller’s platform. It then evolved, as all good things do, 
+      into a place where you could buy and sell with ease. Now, we carry 40 plus brands, own every watch on our site and 
+      complete tens of thousands of transactions each year.
+
+  items:
+    nav: Watches
+    table:
+      brand: Brand
+      model: Model
+      price: Price
+      dial: Dial color
+      case_material: Case Material
+      case_dimensions: Case Dimensions
+      bracelet: Bracelet Material
+      movement: Movement Type
+      external_id: External ID
+      no_items: No items

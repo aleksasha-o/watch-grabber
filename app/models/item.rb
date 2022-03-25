@@ -6,6 +6,7 @@ class Item < ApplicationRecord
     eur: 'eur',
     uah: 'uah'
   }, _prefix: true
-  validates :type, :price, :currency, presence: true
+  validates :type, :price, :currency, :external_id, presence: true
   validates :price, numericality: { greater_than: 0 }
+  validates :external_id, uniqueness: true
 end

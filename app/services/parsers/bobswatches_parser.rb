@@ -7,6 +7,7 @@ module Parsers
       NEXT_PAGE     = '.categoryPaginationButtonNextLast a[href]',
       MODEL         = :'model name/number',
       PRICE         = '[itemprop="price"]',
+      EXTERNAL_ID   = '[itemprop="sku"]',
       FEATURES      = '.descriptioncontainer table',
       BOX_1         = :'box & papers',
       BOX_2         = :'box and papers',
@@ -53,6 +54,10 @@ module Parsers
 
     def movement_type
       features[:movement]
+    end
+
+    def external_id
+      parse_html(self.class::EXTERNAL_ID)[0]&.values&.last
     end
 
     def box_papers

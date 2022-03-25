@@ -5,11 +5,16 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= favicon_pack_tag 'favicon.ico' %>
+
+    <%= javascript_pack_tag 'application' %>
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   </head>
 
   <body>
+    <div id="toasts" data-toasts="<%= flash.to_h.to_json %>"></div>
+    <%= render 'layouts/header' %>
     <%= yield %>
   </body>
 </html>
