@@ -2,24 +2,14 @@
 
 module Processors
   class Run
-    SHOP_HODINKEE   = 'shop_hodinkee'
-    CROWNANDCALIBER = 'crownandcaliber'
-    BOBSWATCHES     = 'bobswatches'
-
-    def initialize(type)
-      @type = type
-    end
-
-    def self.call(type)
-      new(type).call
+    def self.call
+      new.call
     end
 
     def call
-      case @type
-      when SHOP_HODINKEE   then Processors::ShopHodinkeeProcessor.call(page: 18)
-      when CROWNANDCALIBER then Processors::CrownandcaliberProcessor.call
-      when BOBSWATCHES     then Processors::BobswatchesProcessor.call
-      end
+      Processors::ShopHodinkeeProcessor.call(page: 18)
+      Processors::CrownandcaliberProcessor.call(page: 55)
+      Processors::BobswatchesProcessor.call(page: 21)
     end
   end
 end
