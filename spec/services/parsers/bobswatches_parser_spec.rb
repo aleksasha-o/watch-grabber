@@ -33,7 +33,8 @@ describe Parsers::BobswatchesParser do
         case_material:     case_material,
         case_dimensions:   '42mm',
         bracelet_material: '904L stainless steel Oyster w/ Oysterclasp',
-        movement_type:     'Automatic 9001'
+        movement_type:     'Automatic 9001',
+        external_id:       '148270 x'
       }
     end
 

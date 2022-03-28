@@ -32,7 +32,8 @@ describe Parsers::CrownandcaliberParser do
         case_material:     'Stainless Steel',
         case_dimensions:   '36.00',
         bracelet_material: 'Stainless Steel',
-        movement_type:     'Automatic'
+        movement_type:     'Automatic',
+        external_id:       'Item No. 10-10-ROL-6FA5L3'
       }
     end
 

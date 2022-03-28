@@ -9,7 +9,6 @@ describe Parsers::ShopHodinkeeParser do
       {
         crystal:          'Sapphire crystal',
         water_resistance: '200 meters',
-        reference_number: 'SLA043',
         functions:        'Hours, minutes, seconds, date',
         caseback:         'Stainless steel',
         power_reserve:    '50 hours',
@@ -28,7 +27,8 @@ describe Parsers::ShopHodinkeeParser do
         case_material:     'Stainless steel with black hard coating',
         case_dimensions:   '39.9mm diameter; 14.1mm thickness',
         bracelet_material: 'Black silicone strap',
-        movement_type:     'Seiko, self-winding, 8L35'
+        movement_type:     'Seiko, self-winding, 8L35',
+        external_id:       'SLA043'
       }
     end
 

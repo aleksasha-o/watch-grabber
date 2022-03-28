@@ -82,7 +82,10 @@ module Parsers
                     .map(&:content)
                     .map { |str| str.split('- ', 2) }
                     .reject { |pair| pair.size < 2 }
-                    .to_h { |key, value| [key&.strip&.downcase&.to_sym, value&.strip&.gsub("\n", '')&.gsub(SPACE_EXPRESSION, ' ')] }
+                    .to_h do |key, value|
+        [key&.strip&.downcase&.to_sym,
+         value&.strip&.gsub("\n", '')&.gsub(SPACE_EXPRESSION, ' ')]
+      end
     end
   end
 end
