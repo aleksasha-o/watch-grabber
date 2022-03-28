@@ -13,6 +13,7 @@ FactoryBot.define do
     bracelet_material { Faker::Commerce.material }
     movement_type     { Faker::Lorem.word }
     external_id       { Faker::Internet.uuid }
+    image_uri         { Faker::Internet.url  }
 
     initialize_with { (type.safe_constantize || Item).new }
   end

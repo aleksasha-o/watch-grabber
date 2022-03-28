@@ -1,7 +1,7 @@
 const STYLES = {
-  notice: 'pink',
+  notice: 'teal',
   alert: 'red',
-  warning: 'grey'
+  warning: 'yellow darken-3'
 }
 
 document.addEventListener('DOMContentLoaded', () => {

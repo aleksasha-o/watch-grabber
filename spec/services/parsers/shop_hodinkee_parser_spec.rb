@@ -28,7 +28,8 @@ describe Parsers::ShopHodinkeeParser do
         case_dimensions:   '39.9mm diameter; 14.1mm thickness',
         bracelet_material: 'Black silicone strap',
         movement_type:     'Seiko, self-winding, 8L35',
-        external_id:       'SLA043'
+        external_id:       'SLA043',
+        image_uri:         'SLA043_1.jpg'
       }
     end
 

@@ -34,7 +34,8 @@ describe Parsers::BobswatchesParser do
         case_dimensions:   '42mm',
         bracelet_material: '904L stainless steel Oyster w/ Oysterclasp',
         movement_type:     'Automatic 9001',
-        external_id:       '148270 x'
+        external_id:       '148270 x',
+        image_uri:         'https://www.bobswatches.com/images/Rolex-Sky-Dweller-326934-148270.png'
       }
     end
 

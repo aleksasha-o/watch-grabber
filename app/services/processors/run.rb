@@ -8,7 +8,7 @@ module Processors
 
     def call
       Processors::ShopHodinkeeProcessor.call(page: 18)
-      Processors::CrownandcaliberProcessor.call(page: 55)
+      Processors::CrownandcaliberProcessor.call(page: 54)
       Processors::BobswatchesProcessor.call(page: 21)
     end
   end

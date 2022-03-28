@@ -76,6 +76,10 @@ module Parsers
       parse_content_by_tag(self.class::EXTERNAL_ID)[0]
     end
 
+    def image_uri
+      parse_html('.slider--item img')[0]&.values&.first
+    end
+
     def features
       @features ||= parse_html(FEATURES)
                     .each { |item| item.children&.[](3)&.children&.[](1)&.remove }

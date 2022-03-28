@@ -78,3 +78,6 @@ RSpec/AnyInstance:
 
 RSpec/VerifiedDoubles:
   Enabled: false
+
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false

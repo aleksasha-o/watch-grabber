@@ -1,5 +1,5 @@
 <div class="navbar-fixed">
-  <nav class="pink lighten-3">
+  <nav class="teal">
     <div class="container nav-wrapper">
       <%= image_pack_tag 'logo.png' %>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
@@ -13,7 +13,7 @@
           <%= link_to items_path do %>
             <i class="material-icons left">watch</i>
             <%= t('items.nav') %>
-            <span class="new badge pink lighten-1" data-badge-caption="">
+            <span class="new badge teal darken-3" data-badge-caption="">
               <%= @item_numbers %>
             </span>
           <% end %>

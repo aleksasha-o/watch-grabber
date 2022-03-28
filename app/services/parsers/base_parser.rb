@@ -27,7 +27,8 @@ module Parsers
         case_dimensions:   case_dimensions,
         bracelet_material: bracelet_material,
         movement_type:     movement_type,
-        external_id:       external_id
+        external_id:       external_id,
+        image_uri:         image_uri
       }
     end
     # rubocop:enable Metrics/MethodLength

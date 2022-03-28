@@ -60,6 +60,10 @@ module Parsers
       parse_html(self.class::EXTERNAL_ID)[0]&.values&.last
     end
 
+    def image_uri
+      parse_html('.watchMainImageContainer')[0]&.values&.second
+    end
+
     def box_papers
       features[BOX_1] || features[BOX_2]
     end

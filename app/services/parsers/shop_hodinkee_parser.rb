@@ -63,6 +63,10 @@ module Parsers
       features[:reference] || "#{brand} #{model} #{price} #{dial_color}"
     end
 
+    def image_uri
+      parse_html('#hero img')[0]&.values&.second
+    end
+
     def function
       features[:functions] || features[:function]
     end
