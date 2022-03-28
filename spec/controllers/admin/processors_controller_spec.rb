@@ -8,25 +8,29 @@ describe Admin::ProcessorsController, type: :controller do
     let(:crown_file) { file_fixture('crownandcaliber_first_page.html').read }
     let(:bobs_file) { file_fixture('bobswatches_first_page.html').read }
 
+    let(:hodinkee_url) { 'https://shop.hodinkee.com/collections/watches?page=18' }
+    let(:crown_url) { 'https://www.crownandcaliber.com/collections/shop-for-watches?page=54' }
+    let(:bobs_url) { 'https://www.bobswatches.com/shop?page=21' }
+
     before do
       allow_any_instance_of(Browser).to receive(:visit)
 
       allow_any_instance_of(Browser)
         .to receive(:visit)
-        .with(url: 'https://shop.hodinkee.com/collections/watches?page=18',
-              tag: '.product-title')
+        .with(url: hodinkee_url,
+              tag: Processors::ShopHodinkeeProcessor::PAGE)
         .and_return(hodinkee_file)
 
       allow_any_instance_of(Browser)
         .to receive(:visit)
-        .with(url: 'https://www.crownandcaliber.com/collections/shop-for-watches?page=54',
-              tag: '.card-title.ng-binding')
+        .with(url: crown_url,
+              tag: Processors::CrownandcaliberProcessor::PAGE)
         .and_return(crown_file)
 
       allow_any_instance_of(Browser)
         .to receive(:visit)
-        .with(url: 'https://www.bobswatches.com/shop?page=21',
-              tag: '.product-title')
+        .with(url: bobs_url,
+              tag: Processors::BobswatchesProcessor::PAGE)
         .and_return(bobs_file)
     end
 
