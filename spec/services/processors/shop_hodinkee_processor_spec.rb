@@ -34,7 +34,6 @@ describe Processors::ShopHodinkeeProcessor do
                                                 movement_type:     'Seiko, self-winding, 8L35',
                                                 crystal:           'Sapphire crystal',
                                                 water_resistance:  '200 meters',
-                                                reference_number:  'SLA043',
                                                 functions:         'Hours, minutes, seconds, date',
                                                 caseback:          'Stainless steel',
                                                 power_reserve:     '50 hours',

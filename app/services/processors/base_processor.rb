@@ -46,7 +46,8 @@ module Processors
         content = visit_item(item_url)
         attributes = parse_item_attributes(content)
 
-        model.create(**attributes)
+        model.find_or_initialize_by(external_id: attributes[:external_id])
+             .update(**attributes)
       end
     end
 

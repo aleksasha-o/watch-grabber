@@ -3,24 +3,22 @@
 module Parsers
   class ShopHodinkeeParser < BaseParser
     TAGS = [
-      ITEM       = '.product-title',
-      NEXT_PAGE  = '[aria-label="next page"]',
-      BRAND      = '.vendor',
-      MODEL      = '//*[@id="watch-pdp"]/div/div[1]/div/div[2]/div/h1/text()',
-      PRICE      = '.price',
-      FEATURES   = '.features__list ul li',
-      BRACELET   = :'bracelet/strap',
-      RESISTANCE = :'water resistance',
-      POWER      = :'power reserve',
-      LUG        = :'lug width'
+      ITEM        = '.product-title',
+      NEXT_PAGE   = '[aria-label="next page"]',
+      BRAND       = '.vendor',
+      MODEL       = '//*[@id="watch-pdp"]/div/div[1]/div/div[2]/div/h1/text()',
+      PRICE       = '.price',
+      FEATURES    = '.features__list ul li',
+      BRACELET    = :'bracelet/strap',
+      RESISTANCE  = :'water resistance',
+      POWER       = :'power reserve',
+      LUG         = :'lug width'
     ].freeze
 
-    # rubocop:disable Metrics/MethodLength
     def additional_attributes
       {
         crystal:          features[:crystal],
         water_resistance: features[RESISTANCE],
-        reference_number: features[:reference],
         functions:        function,
         caseback:         features[:caseback],
         power_reserve:    features[POWER],
@@ -29,7 +27,6 @@ module Parsers
         lume:             features[:lume]
       }
     end
-    # rubocop:enable Metrics/MethodLength
 
     private
 
@@ -62,15 +59,23 @@ module Parsers
       features[:caliber]
     end
 
+    def external_id
+      features[:reference] || "#{brand} #{model} #{price} #{dial_color}"
+    end
+
+    def image_uri
+      parse_html('#hero img')[0]&.values&.second
+    end
+
     def function
       features[:functions] || features[:function]
     end
 
     def features
-      parse_content_by_tag(FEATURES)
-        .map { |str| str.split(': ', 2) }
-        .reject { |pair| pair.size < 2 }
-        .to_h.transform_keys! { |key| key.downcase.to_sym }
+      @features ||= parse_content_by_tag(FEATURES)
+                    .map { |str| str.split(': ', 2) }
+                    .reject { |pair| pair.size < 2 }
+                    .to_h.transform_keys! { |key| key.downcase.to_sym }
     end
   end
 end

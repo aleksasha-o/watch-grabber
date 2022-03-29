@@ -14,12 +14,6 @@ describe HodinkeeItem, type: :model do
         .is_at_least(described_class::MIN_FEATURE_LENGTH)
     end
 
-    it 'validates :reference_number length' do
-      is_expected
-        .to validate_length_of(:reference_number)
-        .is_at_least(described_class::MIN_FEATURE_LENGTH)
-    end
-
     it 'validates :functions length' do
       is_expected
         .to validate_length_of(:functions)
@@ -58,7 +52,6 @@ describe HodinkeeItem, type: :model do
 
     it { is_expected.to allow_value('', nil).for(:crystal) }
     it { is_expected.to allow_value('', nil).for(:water_resistance) }
-    it { is_expected.to allow_value('', nil).for(:reference_number) }
     it { is_expected.to allow_value('', nil).for(:functions) }
     it { is_expected.to allow_value('', nil).for(:caseback) }
     it { is_expected.to allow_value('', nil).for(:power_reserve) }
