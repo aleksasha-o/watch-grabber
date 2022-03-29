@@ -64,31 +64,35 @@ describe Admin::ProcessorsController, type: :controller do
           .and_return(bobs_item_file)
       end
 
-      it 'creates items with needed params' do
-        subject
-        expect(hodinkee_created_item).to have_attributes(dial_color:       'Blue',
-                                                         crystal:          'Sapphire crystal',
-                                                         water_resistance: '200 meters',
-                                                         manufactured:     'Japan')
+      context 'after #create action' do
+        before { subject }
 
-        expect(crown_created_item).to have_attributes(papers:    'Yes',
-                                                      box:       'No',
-                                                      gender:    'Men',
-                                                      condition: 'Very Good')
+        it 'creates items with needed params' do
+          expect(hodinkee_created_item).to have_attributes(dial_color:       'Blue',
+                                                           crystal:          'Sapphire crystal',
+                                                           water_resistance: '200 meters',
+                                                           manufactured:     'Japan')
 
-        expect(bobs_created_item).to have_attributes(year:          '2021',
-                                                     gender:        "Men's",
-                                                     condition:     'Excellent',
-                                                     regular_price: '$30,350.36')
+          expect(crown_created_item).to have_attributes(papers:    'Yes',
+                                                        box:       'No',
+                                                        gender:    'Men',
+                                                        condition: 'Very Good')
+
+          expect(bobs_created_item).to have_attributes(year:          '2021',
+                                                       gender:        "Men's",
+                                                       condition:     'Excellent',
+                                                       regular_price: '$30,350.36')
+        end
+
+        it 'sets flash message' do
+          expect(controller).to set_flash[:notice].to(I18n.t('processors.success'))
+        end
       end
 
-      it { expect { subject }.to change(Item, :count).by(3) }
+      context 'during #create action' do
+        it { expect { subject }.to change(Item, :count).by(3) }
 
-      it { expect(subject).to redirect_to(admin_processors_path) }
-
-      it 'sets flash message' do
-        subject
-        expect(controller).to set_flash[:notice].to(I18n.t('processors.success'))
+        it { is_expected.to redirect_to(admin_processors_path) }
       end
     end
 
