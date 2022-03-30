@@ -3,8 +3,11 @@
 module Admin
   class ProcessorsController < ApplicationController
     def create
-      Processors::Run.call
-      redirect_to admin_processors_path, notice: t('processors.success')
+      HodinkeeJob.perform_async
+      CrownandcaliberJob.perform_async
+      BobswatchesJob.perform_async
+
+      redirect_to admin_processors_path, notice: t('processors.start')
     end
   end
 end
