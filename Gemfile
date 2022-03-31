@@ -10,6 +10,7 @@ gem 'activerecord-postgres_enum'
 gem 'ferrum'
 gem 'nokogiri', '>= 1.13.2'
 gem 'sidekiq'
+gem 'sidekiq-cron'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
