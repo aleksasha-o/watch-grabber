@@ -3,13 +3,13 @@
 class Browser
   RETRY_INTERVAL = 0.03
   TIMEOUT = 5
-  FORMATS = /\.png|\.jpg|\.jpeg|\.svg|\.woff2/
+  FORMATS = %w[Document Script XHR].freeze
 
   class NotFoundError < StandardError; end
 
   def visit(url:, tag:)
     browser.network.intercept
-    browser.on(:request) { |request| request.match?(FORMATS) ? request.abort : request.continue }
+    browser.on(:request) { |request| FORMATS.include?(request.resource_type) ? request.continue : request.abort }
     browser.go_to(url)
     wait_for_element(tag)
     clear_cache

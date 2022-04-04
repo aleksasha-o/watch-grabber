@@ -1,3 +1,7 @@
 :concurrency: 1
 :max_retries: 3
-
+:queues:
+  - critical
+  - parsing
+  - default
+  - low

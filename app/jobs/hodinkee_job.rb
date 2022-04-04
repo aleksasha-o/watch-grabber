@@ -2,6 +2,7 @@
 
 class HodinkeeJob
   include Sidekiq::Job
+  sidekiq_options queue: :parsing
 
   def perform
     Processors::ShopHodinkeeProcessor.call
