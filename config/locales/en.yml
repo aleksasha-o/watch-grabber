@@ -2,6 +2,7 @@ en:
   processors:
     nav: Run Parsing
     start: Process has been started
+    stop: Stopping the process
 
   items:
     nav: Watches

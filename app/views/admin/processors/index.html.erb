@@ -4,4 +4,10 @@
               method: :post do %>
     <span>RUN</span>
   <% end %>
+
+  <%= link_to admin_processors_path,
+              class: 'waves-effect waves-light btn-large red lighten-1',
+              method: :delete do %>
+    <span>STOP</span>
+  <% end %>
 </div>

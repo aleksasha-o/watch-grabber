@@ -14,5 +14,6 @@ Rails.application.routes.draw do
   resources :items, only: %i[index]
   namespace :admin do
     resources :processors, only: %i[index create]
+    resource :processors, only: %i[destroy]
   end
 end
