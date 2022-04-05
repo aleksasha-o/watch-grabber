@@ -3,7 +3,7 @@
 module Admin
   class ProcessorsController < ApplicationController
     def create
-      # HodinkeeJob.perform_async
+      HodinkeeJob.perform_async
       CrownandcaliberJob.perform_async
       BobswatchesJob.perform_async
 

@@ -17,7 +17,7 @@ module Processors
       parse_item_links
       visit_and_parse_items
 
-      return browser.exit_browser if @page >= 10 || !page_parser.next_page?
+      return browser.exit_browser if @page >= 2 || !page_parser.next_page?
 
       @page += 1
       call
