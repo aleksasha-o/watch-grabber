@@ -1,7 +1,7 @@
 en:
   processors:
     nav: Run Parsing
-    success: Process done
+    start: Process has been started
 
   items:
     nav: Watches
