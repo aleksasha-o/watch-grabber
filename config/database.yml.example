@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: username
+  password: password
+  host: localhost
+
+development:
+  <<: *default
+  database: WatchGrabber_development
+
+test:
+  <<: *default
+  database: WatchGrabber_test
+
+production:
+  <<: *default
+  database: WatchGrabber_production
