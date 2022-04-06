@@ -1,13 +1,18 @@
 <div class="container">
-  <%= link_to admin_processors_path,
-              class: 'waves-effect waves-light btn-large teal lighten-1',
-              method: :post do %>
-    <span>RUN</span>
-  <% end %>
+<div class="row">
 
-  <%= link_to admin_processors_path,
-              class: 'waves-effect waves-light btn-large red lighten-1',
-              method: :delete do %>
-    <span>STOP</span>
-  <% end %>
+    <div class="col s12 center" style="margin-top: 50px">
+      <%= link_to admin_processors_path,
+                  class: 'btn-floating btn-large pulse waves-effect waves-light',
+                  method: :post do %>
+        <i class="material-icons">play_arrow</i>
+      <% end %>
+
+      <%= link_to admin_processors_path,
+                  class: 'btn-floating btn-large pulse waves-effect waves-light btn-large red lighten-1',
+                  method: :delete do %>
+        <i class="material-icons">stop</i>
+      <% end %>
+    </div>
+  </div>
 </div>

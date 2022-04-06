@@ -32,7 +32,6 @@ class Browser
     begin
       raise NotFoundError if browser.at_css(tag).nil?
     rescue NotFoundError, Ferrum::NodeNotFoundError
-      clear_cache
       sleep RETRY_INTERVAL
       clear_cache
       load_time += RETRY_INTERVAL
