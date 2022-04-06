@@ -3,22 +3,13 @@
 module Admin
   class ProcessorsController < ApplicationController
     def create
-      HodinkeeJob.perform_async
-      CrownandcaliberJob.perform_async
-      BobswatchesJob.perform_async
+      Processors::Run.call
 
       redirect_to admin_processors_path, notice: t('processors.start')
     end
 
     def destroy
-      Sidekiq::Workers.new.each do |process_id, *|
-        process = Sidekiq::Process.new('identity' => process_id)
-        process.stop!
-      end
-
-      Sidekiq::Queue.all.each(&:clear)
-      Sidekiq::RetrySet.new&.clear
-      Sidekiq::ScheduledSet.new&.clear
+      Processors::Stop.call
 
       redirect_to admin_processors_path, notice: t('processors.stop')
     end

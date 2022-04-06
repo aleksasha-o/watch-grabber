@@ -2,7 +2,7 @@ en:
   processors:
     nav: Run Parsing
     start: Process has been started
-    stop: Stopping the process
+    stop: Process has been stopped
 
   items:
     nav: Watches
@@ -17,3 +17,4 @@ en:
       movement: Movement Type
       external_id: External ID
       no_items: No items
+started
