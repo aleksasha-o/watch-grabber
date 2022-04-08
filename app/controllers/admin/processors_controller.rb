@@ -3,13 +3,13 @@
 module Admin
   class ProcessorsController < ApplicationController
     def create
-      Processors::Run.call
+      Processors::Controller.new.run
 
       redirect_to admin_processors_path, notice: t('processors.start')
     end
 
     def destroy
-      Processors::Stop.call
+      Processors::Controller.new.stop
 
       redirect_to admin_processors_path, notice: t('processors.stop')
     end

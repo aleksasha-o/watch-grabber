@@ -62,7 +62,11 @@ module Processors
     end
 
     def stopping?
-      !ParsingStatus.instance.reload.running
+      redis.get('parsing:run').blank?
+    end
+
+    def redis
+      @redis ||= Redis.new
     end
   end
 end
