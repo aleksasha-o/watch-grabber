@@ -3,7 +3,7 @@
 module Parsers
   class ShopHodinkeeParser < BaseParser
     TAGS = [
-      ITEM        = '.product-title',
+      ITEM        = '.tw-pc',
       NEXT_PAGE   = '[aria-label="next page"]',
       BRAND       = '.vendor',
       MODEL       = '//*[@id="watch-pdp"]/div/div[1]/div/div[2]/div/h1/text()',
