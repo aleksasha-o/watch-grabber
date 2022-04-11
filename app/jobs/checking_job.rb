@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
-require 'sidekiq-scheduler'
-
 class CheckingJob
-  include Sidekiq::Worker
+  include Sidekiq::Job
+
   sidekiq_options queue: :checking
 
   def perform
