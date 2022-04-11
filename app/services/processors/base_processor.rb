@@ -62,11 +62,7 @@ module Processors
     end
 
     def stopping?
-      redis.get('parsing:run').blank?
-    end
-
-    def redis
-      @redis ||= Redis.new
+      Sidekiq.redis { |redis| redis.get('parsing:run') }.blank?
     end
   end
 end

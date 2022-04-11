@@ -16,6 +16,6 @@ class Item < ApplicationRecord
   private
 
   def count_items
-    Redis.new.set('items_number', Item.count)
+    Sidekiq.redis { |redis| redis.set('items_number', Item.count) }
   end
 end
