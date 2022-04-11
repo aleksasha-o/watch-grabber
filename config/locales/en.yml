@@ -2,7 +2,9 @@ en:
   processors:
     nav: Run Parsing
     start: Process has been started
+    start_date:  'Last Run: %{datetime}'
     stop: Process has been stopped
+    stop_date: 'Last Cancellation "%{datetime}"'
 
   items:
     nav: Watches

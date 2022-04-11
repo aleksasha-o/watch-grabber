@@ -2,6 +2,10 @@
 
 module Admin
   class ProcessorsController < ApplicationController
+    def index
+      @redis = Redis.new
+    end
+
     def create
       Processors::Controller.new.run
 

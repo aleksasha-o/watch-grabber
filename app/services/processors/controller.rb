@@ -3,17 +3,30 @@
 module Processors
   class Controller
     def run
-      Redis.new.set('parsing:run', true)
+      redis.set('parsing:run', true)
+      redis.set('parsing:run:datetime', datetime)
 
-      # HodinkeeJob.perform_async
-      # CrownandcaliberJob.perform_async
+      HodinkeeJob.perform_async
+      CrownandcaliberJob.perform_async
       BobswatchesJob.perform_async
     end
 
     def stop
-      Redis.new.del('parsing:run')
+      redis.del('parsing:run')
+      redis.set('parsing:stop:datetime', datetime)
 
       Sidekiq::Queue.all.find { |queue| queue.name == 'parsing' }&.clear
+    end
+
+    private
+
+    def redis
+      Redis.new
+    end
+
+    def datetime
+      time = Time.zone.now
+      time.today? ? time.to_formatted_s(:time) : time.to_formatted_s(:short)
     end
   end
 end
