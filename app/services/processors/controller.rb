@@ -15,10 +15,24 @@ module Processors
       redis.del('parsing:run')
       redis.set('parsing:stop:datetime', datetime)
 
-      Sidekiq::Queue.all.find { |queue| queue.name == 'parsing' }&.clear
+      parsing_queue&.clear
+    end
+
+    def check
+      redis&.del('parsing:run') if parsing_queue&.size&.zero? && parsing_worker.blank?
     end
 
     private
+
+    def parsing_worker
+      Sidekiq::Workers.new.each do |*, work|
+        return work if work['queue'] == 'parsing'
+      end
+    end
+
+    def parsing_queue
+      Sidekiq::Queue.all.find { |queue| queue.name == 'parsing' }
+    end
 
     def redis
       @redis ||= Redis.new

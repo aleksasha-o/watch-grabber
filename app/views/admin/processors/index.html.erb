@@ -15,7 +15,7 @@
     <div style="display: inline-block"
          class="center-align tooltipped"
          data-position="bottom"
-         data-tooltip="Last Cancellation: <%= @redis.get('parsing:stop:datetime') %>">
+         data-tooltip="<%= t('processors.stop_date', datetime: @redis.get('parsing:stop:datetime')) %>">
       <%= link_to admin_processors_path,
                   class: "waves-effect btn-large red lighten-1 #{'disabled' if @redis.get('parsing:run').blank?}",
                   method: :delete do %>
