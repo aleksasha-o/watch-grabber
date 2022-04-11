@@ -3,7 +3,7 @@
 module Admin
   class ProcessorsController < ApplicationController
     def index
-      @redis = Redis.new
+      @redis = redis
     end
 
     def create

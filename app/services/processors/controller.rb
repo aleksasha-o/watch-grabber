@@ -21,7 +21,7 @@ module Processors
     private
 
     def redis
-      Redis.new
+      @redis ||= Redis.new
     end
 
     def datetime
