@@ -6,10 +6,6 @@ class ApplicationController < ActionController::Base
   private
 
   def count_items
-    @item_numbers = redis.get('items_number') || 0
-  end
-
-  def redis
-    @redis ||= Redis.new
+    @item_numbers = Item.count
   end
 end

@@ -9,6 +9,9 @@ gem 'rails', '~> 6.0.3'
 gem 'activerecord-postgres_enum'
 gem 'ferrum'
 gem 'nokogiri', '>= 1.13.2'
+gem 'redis'
+gem 'redis-namespace'
+gem 'redis-rails'
 gem 'sidekiq'
 gem 'sidekiq-limit_fetch'
 gem 'sidekiq-scheduler'
@@ -20,8 +23,6 @@ gem 'puma', '~> 4.1'
 gem 'webpacker', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
-# Use Redis adapter to run Action Cable in production
-# gem 'redis', '~> 4.0'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

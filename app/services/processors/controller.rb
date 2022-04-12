@@ -3,10 +3,8 @@
 module Processors
   class Controller
     def run
-      Sidekiq.redis do |redis|
-        redis.set('parsing:run', true)
-        redis.set('parsing:run:datetime', datetime)
-      end
+      Redis.current.set('parsing:run', true)
+      Redis.current.set('parsing:run:datetime', datetime)
 
       HodinkeeJob.perform_async
       CrownandcaliberJob.perform_async
@@ -14,16 +12,14 @@ module Processors
     end
 
     def stop
-      Sidekiq.redis do |redis|
-        redis.del('parsing:run')
-        redis.set('parsing:stop:datetime', datetime)
-      end
+      Redis.current.del('parsing:run')
+      Redis.current.set('parsing:stop:datetime', datetime)
 
       parsing_queue&.clear
     end
 
     def check
-      Sidekiq.redis { |redis| redis.del('parsing:run') } if parsing_queue&.size&.zero? && parsing_worker.blank?
+      Redis.current.del('parsing:run') if parsing_queue&.size&.zero? && parsing_worker.blank?
     end
 
     private
@@ -39,8 +35,7 @@ module Processors
     end
 
     def datetime
-      time = Time.zone.now
-      time.today? ? time.to_formatted_s(:time) : time.to_formatted_s(:short)
+      Time.zone.now.to_formatted_s(:short)
     end
   end
 end

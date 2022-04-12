@@ -9,13 +9,4 @@ class Item < ApplicationRecord
   validates :type, :price, :currency, :external_id, presence: true
   validates :price, numericality: { greater_than: 0 }
   validates :external_id, uniqueness: true
-
-  after_create :count_items
-  after_destroy :count_items
-
-  private
-
-  def count_items
-    Sidekiq.redis { |redis| redis.set('items_number', Item.count) }
-  end
 end
