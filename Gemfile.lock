@@ -130,6 +130,8 @@ GEM
     method_source (1.0.0)
     mini_mime (1.1.2)
     minitest (5.15.0)
+    mock_redis (0.31.0)
+      ruby2_keywords
     msgpack (1.4.5)
     nio4r (2.5.8)
     nokogiri (1.13.3-x86_64-linux)
@@ -225,6 +227,9 @@ GEM
       rspec-expectations (~> 3.10)
       rspec-mocks (~> 3.10)
       rspec-support (~> 3.10)
+    rspec-sidekiq (3.1.0)
+      rspec-core (~> 3.0, >= 3.0.0)
+      sidekiq (>= 2.4.0)
     rspec-support (3.11.0)
     rubocop (1.26.0)
       parallel (~> 1.10)
@@ -244,6 +249,7 @@ GEM
     rubocop-rspec (2.9.0)
       rubocop (~> 1.19)
     ruby-progressbar (1.11.0)
+    ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
     rufus-scheduler (3.8.1)
       fugit (~> 1.1, >= 1.1.6)
@@ -326,6 +332,7 @@ DEPENDENCIES
   ferrum
   jbuilder (~> 2.7)
   listen (~> 3.2)
+  mock_redis
   nokogiri (>= 1.13.2)
   pg (>= 0.18, < 2.0)
   pry-rails
@@ -336,6 +343,7 @@ DEPENDENCIES
   redis-namespace
   redis-rails
   rspec-rails
+  rspec-sidekiq
   rubocop
   rubocop-rails
   rubocop-rspec

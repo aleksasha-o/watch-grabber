@@ -3,7 +3,6 @@
 FactoryBot.define do
   factory :item do
     type              { %w[HodinkeeItem CrownandcaliberItem BobswatchesItem].sample }
-    brand             { Faker::Commerce.brand }
     model             { Faker::Commerce.product_name }
     price             { Faker::Commerce.price(range: 0..100_000.0, as_string: true) }
     currency          { %w[usd eur uah].sample }
@@ -15,6 +14,7 @@ FactoryBot.define do
     external_id       { Faker::Internet.uuid }
     image_uri         { Faker::Internet.url  }
 
+    sequence(:brand) { |n| "#{Faker::Commerce.brand}#{n}" }
     initialize_with { (type.safe_constantize || Item).new }
   end
 end
