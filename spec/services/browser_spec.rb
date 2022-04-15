@@ -26,12 +26,18 @@ describe Browser do
     describe 'Ferrum browser setup' do
       let(:network) { double(intercept: true) }
 
-      before { allow_any_instance_of(Ferrum::Browser).to receive(:network).and_return(network) }
+      before do
+        allow_any_instance_of(Ferrum::Browser).to receive(:network).and_return(network)
+        allow(network).to receive(:clear).with(:traffic).and_return(true)
+        allow(network).to receive(:clear).with(:cache).and_return(true)
+      end
 
       after { subject }
 
       it { expect_any_instance_of(Ferrum::Browser).to receive(:on).with(:request) }
       it { expect(network).to receive(:intercept) }
+      it { expect(network).to receive(:clear).with(:traffic) }
+      it { expect(network).to receive(:clear).with(:cache) }
     end
   end
 

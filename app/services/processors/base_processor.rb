@@ -17,7 +17,7 @@ module Processors
       parse_item_links
       visit_and_parse_items
 
-      return browser.exit_browser if @page >= 2 || !page_parser.next_page?
+      return browser.exit_browser if stopping? || @page >= 2 || !page_parser.next_page?
 
       @page += 1
       call
@@ -43,6 +43,8 @@ module Processors
 
     def visit_and_parse_items
       @item_links.each do |item_url|
+        break if stopping?
+
         content = visit_item(item_url)
         attributes = parse_item_attributes(content)
 
@@ -57,6 +59,10 @@ module Processors
 
     def parse_item_attributes(item_content)
       parser.new(item_content).attributes
+    end
+
+    def stopping?
+      Redis.current.get('parsing:run').blank?
     end
   end
 end

@@ -1,7 +1,15 @@
-:concurrency: 1
+:concurrency: 2
 :max_retries: 3
 :queues:
   - critical
-  - parsing
   - default
+  - checking
+  - parsing
   - low
+:limits:
+  parsing: 1
+:schedule:
+  checking_job:
+    queue: checking
+    class: CheckingJob
+    cron: '*/3 * * * * *'

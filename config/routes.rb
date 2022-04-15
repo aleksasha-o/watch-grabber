@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require 'sidekiq/web'
-require 'sidekiq/cron/web'
 
 Rails.application.routes.draw do
   def draw(routes_name)
@@ -14,5 +13,6 @@ Rails.application.routes.draw do
   resources :items, only: %i[index]
   namespace :admin do
     resources :processors, only: %i[index create]
+    resource :processors, only: %i[destroy]
   end
 end

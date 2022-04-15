@@ -3,16 +3,17 @@
 module Parsers
   class ShopHodinkeeParser < BaseParser
     TAGS = [
-      ITEM        = '.product-title',
-      NEXT_PAGE   = '[aria-label="next page"]',
-      BRAND       = '.vendor',
-      MODEL       = '//*[@id="watch-pdp"]/div/div[1]/div/div[2]/div/h1/text()',
-      PRICE       = '.price',
-      FEATURES    = '.features__list ul li',
-      BRACELET    = :'bracelet/strap',
-      RESISTANCE  = :'water resistance',
-      POWER       = :'power reserve',
-      LUG         = :'lug width'
+      ITEM          = '.tw-pc',
+      NEXT_PAGE     = '[aria-label="next page"]',
+      BRAND         = '.vendor',
+      MODEL         = '//*[@id="watch-pdp"]/div/div[1]/div/div[2]/div/h1/text()',
+      PRICE         = '.price',
+      FEATURES      = '.features__list ul li',
+      CASE_MATERIAL = :'case material',
+      BRACELET      = :'bracelet/strap',
+      RESISTANCE    = :'water resistance',
+      POWER         = :'power reserve',
+      LUG           = :'lug width'
     ].freeze
 
     def additional_attributes
@@ -43,7 +44,7 @@ module Parsers
     end
 
     def case_material
-      materials_array = [features[:material], features[:materials]].compact
+      materials_array = [features[:material], features[:materials], features[CASE_MATERIAL]].compact
       materials_array.join(' ') if materials_array.any?
     end
 

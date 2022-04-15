@@ -10,6 +10,7 @@ require 'rspec/rails'
 require 'webmock/rspec'
 require 'faker'
 require 'factory_bot_rails'
+require 'sidekiq/testing'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -36,6 +37,7 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 RSpec.configure do |config|
+  config.include ActiveSupport::Testing::TimeHelpers
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
@@ -75,4 +77,14 @@ RSpec.configure do |config|
   end
 
   WebMock.disable_net_connect!(allow_localhost: true)
+
+  Sidekiq::Testing.fake!
+  RSpec::Sidekiq.configure do |config|
+    # Clears all job queues before each example
+    config.clear_all_enqueued_jobs = true # default => true
+    # Whether to use terminal colours when outputting messages
+    config.enable_terminal_colours = true # default => true
+    # Warn when jobs are not enqueued to Redis but to a job array
+    config.warn_when_jobs_not_processed_by_sidekiq = false # default => true
+  end
 end

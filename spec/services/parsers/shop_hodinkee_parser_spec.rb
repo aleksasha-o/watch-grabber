@@ -51,9 +51,8 @@ describe Parsers::ShopHodinkeeParser do
 
     describe '#item_urls' do
       let(:links) do
-        %w[/collections/watches/products/aquaracer-200-blue-dial-on-bracelet
-           /collections/watches/products/seiko-prospex-alpinist-limited-edition-sje085
-           /collections/watches/products/sbga467-deposit]
+        %w[/collections/watches/products/zenith-50th-el-primero-anniversary-el-primero-a384-revival
+           /collections/watches/products/bamford-x-peanuts-joe-preppy-gmt-limited-edition-for-hodinkee]
       end
 
       it { expect(subject.item_urls).to match_array(links) }

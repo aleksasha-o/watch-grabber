@@ -11,7 +11,7 @@ describe Processors::ShopHodinkeeProcessor do
 
       allow_any_instance_of(Browser)
         .to receive(:visit)
-        .with(url: 'https://shop.hodinkee.com/collections/watches?page=1', tag: '.product-title')
+        .with(url: 'https://shop.hodinkee.com/collections/watches?page=1', tag: '.tw-pc')
         .and_return(file)
     end
 
@@ -19,8 +19,8 @@ describe Processors::ShopHodinkeeProcessor do
       before do
         allow_any_instance_of(Browser)
           .to receive(:visit)
-          .with(url: 'https://shop.hodinkee.com/collections/watches/products/aquaracer-200-blue-dial-on-bracelet',
-                tag: '.vendor')
+          .with(url: 'https://shop.hodinkee.com/collections/watches/products/bamford-x-peanuts-joe-preppy-gmt-limited-edition-for-hodinkee',
+                tag: '.tw-pc')
           .and_return(item_file)
 
         subject.call
@@ -46,8 +46,8 @@ describe Processors::ShopHodinkeeProcessor do
       before do
         allow_any_instance_of(Browser)
           .to receive(:visit)
-          .with(url: 'https://shop.hodinkee.com/collections/watches/products/aquaracer-200-blue-dial-on-bracelet',
-                tag: '.vendor')
+          .with(url: 'https://shop.hodinkee.com/collections/watches/products/bamford-x-peanuts-joe-preppy-gmt-limited-edition-for-hodinkee',
+                tag: '.tw-pc')
           .and_return(file)
 
         subject.call
