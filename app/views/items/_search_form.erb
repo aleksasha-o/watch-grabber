@@ -2,14 +2,14 @@
   <div class='fixed-container'>
     <form>
       <div class="row">
-        <div class="input-field">
+        <div class="input-field mt-3">
           <div class="form-group">
           <%= f.label :brand %>
             <%= f.select(:brand_cont, options_for_select(Item.all.pluck(:brand).each { |brand| brand.humanize.capitalize }.uniq.sort,
                                                        selected: f.object.brand_cont), {prompt: 'Choose a brand you want to find'}) %>
           </div>
         </div>
-        <div class="input-field">
+        <div class="input-field mt-3">
           <%= f.search_field :model_cont, placeholder: t('items.search_hint.model') %>
           <%= f.label :model %>
         </div>
@@ -34,23 +34,23 @@
         </div>
         <div class="price-slider" style="margin-bottom: 80px"></div>
         <div class="mt-5">
-          <div class="input-field">
+          <div class="input-field mt-3">
             <%= f.search_field :dial_color_cont, placeholder: t('items.search_hint.dial_color') %>
             <%= f.label :dial_color %>
           </div>
-          <div class="input-field">
+          <div class="input-field mt-3">
             <%= f.search_field :case_material_cont, placeholder: t('items.search_hint.case_material') %>
             <%= f.label :case_material %>
           </div>
-          <div class="input-field">
+          <div class="input-field mt-3">
             <%= f.search_field :case_dimensions_cont, placeholder: t('items.search_hint.case_dimensions') %>
             <%= f.label :case_dimensions %>
           </div>
-          <div class="input-field">
+          <div class="input-field mt-3">
             <%= f.search_field :bracelet_material_cont, placeholder: t('items.search_hint.bracelet_material') %>
             <%= f.label :bracelet_material %>
           </div>
-          <div class="input-field">
+          <div class="input-field mt-3">
             <%= f.search_field :movement_type_cont, placeholder: t('items.search_hint.movement_type') %>
             <%= f.label :movement_type %>
           </div>
@@ -58,8 +58,8 @@
       </div>
     </form>
 
-    <div class="mt-5 center">
-      <div class="input-field " style="display: inline-block">
+    <div class="center">
+      <div class="input-field" style="display: inline-block">
         <button class="btn waves-effect" type="submit" name="action">Search</button>
         <%= link_to 'Clear', request.path, class: 'btn waves-effect' %>
       </div>
