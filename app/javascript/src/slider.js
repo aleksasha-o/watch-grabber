@@ -49,6 +49,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  if (defaultMax === 0) {
+    slider.setAttribute('disabled', true)
+  }
+
   let minSlider = document.querySelector('.noUi-handle.noUi-handle-lower')
   let maxSlider = document.querySelector('.noUi-handle.noUi-handle-upper')
 

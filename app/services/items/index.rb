@@ -14,12 +14,16 @@ module Items
       @ransack_items ||= ransack_search.result(distinct: true)
     end
 
+    def brands_for_select
+      Item.pluck(:brand).each { |brand| brand.humanize.capitalize }.uniq.sort
+    end
+
     def default_min_price
-      Item.pluck(:price).min.round
+      Item.pluck(:price)&.min&.round
     end
 
     def default_max_price
-      Item.pluck(:price).max.round
+      Item.pluck(:price)&.max&.round
     end
 
     def current_min_price

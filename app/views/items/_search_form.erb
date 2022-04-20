@@ -4,9 +4,10 @@
       <div class="row">
         <div class="input-field mt-3">
           <div class="form-group">
-          <%= f.label :brand %>
-            <%= f.select(:brand_cont, options_for_select(Item.all.pluck(:brand).each { |brand| brand.humanize.capitalize }.uniq.sort,
-                                                       selected: f.object.brand_cont), {prompt: 'Choose a brand you want to find'}) %>
+            <%= f.select(:brand_cont,
+                         options_for_select(data.brands_for_select, selected: f.object.brand_cont),
+                         prompt: t('items.search_hint.brand')) %>
+            <%= f.label :brand %>
           </div>
         </div>
         <div class="input-field mt-3">
