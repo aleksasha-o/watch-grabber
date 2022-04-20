@@ -19,3 +19,11 @@ en:
       movement: Movement Type
       external_id: External ID
       no_items: No items
+    search_hint:
+      brand: Rolex
+      model: Datejust
+      dial_color: Black
+      case_material: Stainless Steel
+      case_dimensions: '41'
+      bracelet_material: Stainless Steel
+      movement_type: Automatic

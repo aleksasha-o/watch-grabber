@@ -1,12 +1,16 @@
-<div class="container">
-  <% if @items.any? %>
+<% if @data.ransack_items.any? %>
+  <div class="row">
+    <div class="col s3">
+      <%= render 'items/search_form', search: @data.ransack_search, data: @data %>
+    </div>
+    <div class="col s9">
       <table class="highlight centered striped responsive-table">
         <thead>
         <tr>
           <th></th>
-          <th><%= t('items.table.brand') %></th>
+          <th><%= sort_link(@data.ransack_search, :brand, t('items.table.brand'), default_order: :asc, class: 'link-to-text-color') %></th>
           <th><%= t('items.table.model') %></th>
-          <th><%= t('items.table.price') %></th>
+          <th><%= sort_link(@data.ransack_search, :price, t('items.table.price'), default_order: :asc, class: 'link-to-text-color') %></th>
           <th><%= t('items.table.dial') %></th>
           <th><%= t('items.table.case_material') %></th>
           <th><%= t('items.table.case_dimensions') %></th>
@@ -15,23 +19,26 @@
           <th><%= t('items.table.external_id') %></th>
         </tr>
         </thead>
-        <% @items.each do |item| %>
-        <tr>
-          <td><%= item.image_uri.present? ? image_tag(item.image_uri, height: '200') : image_pack_tag('placoholder.png', height: '200') %></td>
-          <td><%= item.brand %></td>
-          <td><%= item.model %></td>
-          <td><%= "#{item.price} #{item.currency.upcase}" %></td>
-          <td><%= item.dial_color %></td>
-          <td><%= item.case_material %></td>
-          <td><%= item.case_dimensions %></td>
-          <td><%= item.bracelet_material %></td>
-          <td><%= item.movement_type %></td>
-          <td><%= item.external_id %></td>
-        </tr>
+        <% @data.ransack_items.each do |item| %>
+          <tr>
+            <td><%= item.image_uri.present? ? image_tag(item.image_uri, height: '200') : image_pack_tag('placoholder.png', height: '200') %></td>
+            <td><%= item.brand %></td>
+            <td><%= item.model %></td>
+            <td><%= "#{item.price} #{item.currency.upcase}" %></td>
+            <td><%= item.dial_color %></td>
+            <td><%= item.case_material %></td>
+            <td><%= item.case_dimensions %></td>
+            <td><%= item.bracelet_material %></td>
+            <td><%= item.movement_type %></td>
+            <td><%= item.external_id %></td>
+          </tr>
         <% end %>
         </tbody>
       </table>
-  <% else %>
+<% else %>
+  <div class="container">
     <p class="has-text-centered is-size-6"><%= t('items.table.no_items') %></p>
-  <% end %>
+  </div>
+<% end %>
+</div>
 </div>

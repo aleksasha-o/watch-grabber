@@ -10,6 +10,7 @@ gem 'activerecord-postgres_enum'
 gem 'ferrum'
 gem 'mock_redis'
 gem 'nokogiri', '>= 1.13.2'
+gem 'ransack'
 gem 'redis'
 gem 'redis-namespace'
 gem 'redis-rails'
@@ -61,10 +62,10 @@ group :test do
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'factory_bot_rails'
   gem 'rails-controller-testing'
+  gem 'rspec-sidekiq'
   gem 'shoulda-matchers'
   gem 'webdrivers'
   gem 'webmock'
-  gem 'rspec-sidekiq'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
