@@ -39,6 +39,10 @@ module Parsers
       features[:model]&.strip || parse_content_by_tag(MODEL)[0]&.strip
     end
 
+    def price
+      parse_html('.price')&.children[0]&.content&.scan(PRICE_EXPRESSION)&.join&.gsub(',', '')
+    end
+
     def dial_color
       features[:dial]
     end
