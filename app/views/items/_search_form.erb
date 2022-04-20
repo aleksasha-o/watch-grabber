@@ -11,7 +11,10 @@
           </div>
         </div>
         <div class="input-field mt-3">
-          <%= f.search_field :model_cont, placeholder: t('items.search_hint.model') %>
+          <%= f.search_field :model_cont,
+                             placeholder: t('items.search_hint.model'),
+                             type: 'text',
+                             class: 'validate' %>
           <%= f.label :model %>
         </div>
         <div class="form-group">
@@ -36,23 +39,38 @@
         <div class="price-slider" style="margin-bottom: 80px"></div>
         <div class="mt-5">
           <div class="input-field mt-3">
-            <%= f.search_field :dial_color_cont, placeholder: t('items.search_hint.dial_color') %>
+            <%= f.search_field :dial_color_cont,
+                               placeholder: t('items.search_hint.dial_color'),
+                               type: 'text',
+                               class: 'validate' %>
             <%= f.label :dial_color %>
           </div>
           <div class="input-field mt-3">
-            <%= f.search_field :case_material_cont, placeholder: t('items.search_hint.case_material') %>
+            <%= f.search_field :case_material_cont,
+                               placeholder: t('items.search_hint.case_material'),
+                               type: 'text',
+                               class: 'validate' %>
             <%= f.label :case_material %>
           </div>
           <div class="input-field mt-3">
-            <%= f.search_field :case_dimensions_cont, placeholder: t('items.search_hint.case_dimensions') %>
+            <%= f.search_field :case_dimensions_cont,
+                               placeholder: t('items.search_hint.case_dimensions'),
+                               type: 'text',
+                               class: 'validate' %>
             <%= f.label :case_dimensions %>
           </div>
           <div class="input-field mt-3">
-            <%= f.search_field :bracelet_material_cont, placeholder: t('items.search_hint.bracelet_material') %>
+            <%= f.search_field :bracelet_material_cont,
+                               placeholder: t('items.search_hint.bracelet_material'),
+                               type: 'text',
+                               class: 'validate' %>
             <%= f.label :bracelet_material %>
           </div>
           <div class="input-field mt-3">
-            <%= f.search_field :movement_type_cont, placeholder: t('items.search_hint.movement_type') %>
+            <%= f.search_field :movement_type_cont,
+                               placeholder: t('items.search_hint.movement_type'),
+                               type: 'text',
+                               class: 'validate' %>
             <%= f.label :movement_type %>
           </div>
         </div>
