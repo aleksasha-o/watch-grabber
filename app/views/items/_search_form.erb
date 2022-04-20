@@ -3,8 +3,11 @@
     <form>
       <div class="row">
         <div class="input-field">
-          <%= f.search_field :brand_cont, placeholder: t('items.search_hint.brand') %>
+          <div class="form-group">
           <%= f.label :brand %>
+            <%= f.select(:brand_cont, options_for_select(Item.all.pluck(:brand).each { |brand| brand.humanize.capitalize }.uniq.sort,
+                                                       selected: f.object.brand_cont), {prompt: 'Choose a brand you want to find'}) %>
+          </div>
         </div>
         <div class="input-field">
           <%= f.search_field :model_cont, placeholder: t('items.search_hint.model') %>

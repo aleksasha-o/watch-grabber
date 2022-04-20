@@ -1,8 +1,8 @@
-<% if @data.ransack_items.any? %>
-  <div class="row">
-    <div class="col s3">
-      <%= render 'items/search_form', search: @data.ransack_search, data: @data %>
-    </div>
+<div class="row">
+  <div class="col s3">
+    <%= render 'items/search_form', search: @data.ransack_search, data: @data %>
+  </div>
+  <% if @data.ransack_items.any? %>
     <div class="col s9">
       <table class="highlight centered striped responsive-table">
         <thead>
@@ -35,10 +35,10 @@
         <% end %>
         </tbody>
       </table>
-<% else %>
-  <div class="container">
-    <p class="has-text-centered is-size-6"><%= t('items.table.no_items') %></p>
+  <% else %>
+    <div class="col s9 mt-5">
+      <p class="has-text-centered is-size-6"><%= t('items.table.no_items') %></p>
+    </div>
+  <% end %>
   </div>
-<% end %>
-</div>
 </div>
