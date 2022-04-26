@@ -19,3 +19,13 @@ en:
       movement: Movement Type
       external_id: External ID
       no_items: No items
+    title_sort: Sorting
+    title_filter: Filtering
+    search_hint:
+      brand: Choose brands you want to find
+      model: Datejust
+      dial_color: Black
+      case_material: Stainless Steel
+      case_dimensions: '41'
+      bracelet_material: Rose Gold
+      movement_type: Automatic

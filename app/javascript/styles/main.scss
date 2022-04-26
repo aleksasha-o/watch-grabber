@@ -4,3 +4,25 @@
 .mt-5 {
   margin-top: 50px;
 }
+
+.mt-3 {
+  margin-top: 30px;
+}
+
+.link-to-text-color {
+  display: flex;
+  align-items: center;
+  color: black;
+}
+
+.link-to-text-color:hover {
+  color: #80cbc4;
+}
+
+.fixed-container {
+  position: fixed;
+  padding: 3em;
+  left: 15%;
+  transform: translateX(-58%);
+  width: 25%;
+}
