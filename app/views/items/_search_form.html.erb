@@ -107,21 +107,20 @@
       </div>
     </div>
     <div class="input-field mt-3">
-      <%= f.search_field :bracelet_material,
-                         placeholder: t('items.search_hint.bracelet_material'),
-                         type: 'text',
-                         class: 'validate',
-                         value: params[:bracelet_material] %>
-      <%= f.label :bracelet_material %>
-    </div>
-
-    <div class="input-field mt-3">
       <%= f.search_field :case_material,
                          placeholder: t('items.search_hint.case_material'),
                          type: 'text',
                          class: 'validate',
                          value: params[:case_material] %>
       <%= f.label :case_material %>
+    </div>
+    <div class="input-field mt-3">
+      <%= f.search_field :bracelet_material,
+                         placeholder: t('items.search_hint.bracelet_material'),
+                         type: 'text',
+                         class: 'validate',
+                         value: params[:bracelet_material] %>
+      <%= f.label :bracelet_material %>
     </div>
     <div class="input-field mt-3">
       <%= f.search_field :movement_type,
