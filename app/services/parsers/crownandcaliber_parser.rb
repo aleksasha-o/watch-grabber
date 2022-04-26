@@ -52,6 +52,10 @@ module Parsers
       parse_content_by_tag(MODEL)[0]
     end
 
+    def price
+      parse_content_by_tag(self.class::PRICE)[0]&.scan(PRICE_EXPRESSION)&.join&.gsub(',', '')
+    end
+
     def dial_color
       features[DIAL]
     end

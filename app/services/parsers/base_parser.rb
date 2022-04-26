@@ -58,9 +58,5 @@ module Parsers
     def parse_html(tag)
       engine.search(tag)
     end
-
-    def price
-      parse_content_by_tag(self.class::PRICE)[0]&.scan(PRICE_EXPRESSION)&.join&.gsub(',', '')
-    end
   end
 end
