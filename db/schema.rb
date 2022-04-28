@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_28_134808) do
+ActiveRecord::Schema.define(version: 2022_04_28_154101) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 2022_03_28_134808) do
     t.string "external_id"
     t.string "image_uri"
     t.index ["external_id"], name: "index_items_on_external_id", unique: true
+    t.index ["price"], name: "index_items_on_price"
   end
 
 end
