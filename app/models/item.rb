@@ -12,7 +12,6 @@ class Item < ApplicationRecord
 
   scope :by_brands, ->(brands) { brands.blank? ? all : where(brands.map { |brand| "brand ILIKE '%#{brand}%'" }.join(' OR ')) }
   scope :by_model, ->(model) { model.blank? ? all : where('model ILIKE ?', "%#{model}%") }
-  scope :min_max_price, ->(min_price, max_price) { where('price > ? AND price < ?', min_price, max_price) }
   scope :by_dial_color, ->(dial_color) { dial_color.blank? ? all : where('dial_color ILIKE ?', "%#{dial_color}%") }
   scope :by_case_material, ->(case_material) { case_material.blank? ? all : where('case_material ILIKE ?', "%#{case_material}%") }
   scope :by_case_dimensions, ->(case_dimensions) { case_dimensions.blank? ? all : where('case_dimensions ILIKE ?', "%#{case_dimensions}%") }
@@ -23,4 +22,11 @@ class Item < ApplicationRecord
   scope :ordered_by_brand_desc, -> { order(brand: :desc) }
   scope :ordered_by_price_asc, -> { order(price: :asc) }
   scope :ordered_by_price_desc, -> { order(price: :desc) }
+
+  def self.min_max_price(min_price: nil, max_price: nil)
+    query = all
+    query = query.where('price > ?', min_price) if min_price.present?
+    query = query.where('price < ?', max_price) if max_price.present?
+    query
+  end
 end
