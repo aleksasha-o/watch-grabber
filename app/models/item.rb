@@ -25,8 +25,8 @@ class Item < ApplicationRecord
 
   def self.min_max_price(min_price: nil, max_price: nil)
     query = all
-    query = query.where('price > ?', min_price) if min_price.present?
-    query = query.where('price < ?', max_price) if max_price.present?
+    query = query.where('price >= ?', min_price) if min_price.present?
+    query = query.where('price <= ?', max_price) if max_price.present?
     query
   end
 end
