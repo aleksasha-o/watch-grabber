@@ -79,18 +79,9 @@
                              value: params[:dial_color],
                              list: 'colors' %>
           <datalist id="colors">
-            <option value="White"></option>
-            <option value="Black"></option>
-            <option value="Gray"></option>
-            <option value="Silver"></option>
-            <option value="Red"></option>
-            <option value="Green"></option>
-            <option value="Blue"></option>
-            <option value="Orange"></option>
-            <option value="Yellow"></option>
-            <option value="Brown"></option>
-            <option value="Purple"></option>
-            <option value="Transparent"></option>
+            <% t('items.predefined_values.colors', default: {}).sort.each do |value| %>
+              <option value="<%= value %>"></option>
+            <% end %>
           </datalist>
           <%= f.label :dial_color %>
         </div>
@@ -111,7 +102,13 @@
                          placeholder: t('items.search_hint.case_material'),
                          type: 'text',
                          class: 'validate',
-                         value: params[:case_material] %>
+                         value: params[:case_material],
+                         list: 'case-materials' %>
+      <datalist id="case-materials">
+        <% t('items.predefined_values.case_materials', default: {}).sort.each do |value| %>
+          <option value="<%= value %>"></option>
+        <% end %>
+      </datalist>
       <%= f.label :case_material %>
     </div>
     <div class="input-field mt-3">
@@ -119,7 +116,13 @@
                          placeholder: t('items.search_hint.bracelet_material'),
                          type: 'text',
                          class: 'validate',
-                         value: params[:bracelet_material] %>
+                         value: params[:bracelet_material],
+                         list: 'bracelet-materials' %>
+      <datalist id="bracelet-materials">
+        <% t('items.predefined_values.bracelet_materials', default: {}).sort.each do |value| %>
+          <option value="<%= value %>"></option>
+        <% end %>
+      </datalist>
       <%= f.label :bracelet_material %>
     </div>
     <div class="input-field mt-3">
@@ -127,7 +130,13 @@
                          placeholder: t('items.search_hint.movement_type'),
                          type: 'text',
                          class: 'validate',
-                         value: params[:movement_type] %>
+                         value: params[:movement_type],
+                         list: 'movements' %>
+      <datalist id="movements">
+        <% t('items.predefined_values.movements', default: {}).sort.each do |value| %>
+          <option value="<%= value %>"></option>
+        <% end %>
+      </datalist>
       <%= f.label :movement_type %>
     </div>
     <div class="center">
