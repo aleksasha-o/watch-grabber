@@ -24,7 +24,7 @@ module Filters
     def search_items
       @items = @items.by_brands(@params[:brands])
       @items = @items.by_model(@params[:model])
-      @items = @items.min_max_price(min_price: @params[:price_gteq], max_price: @params[:price_lteq])
+      @items = @items.by_price(min_price: @params[:price_gteq], max_price: @params[:price_lteq])
       @items = @items.by_dial_color(@params[:dial_color])
       @items = @items.by_case_material(@params[:case_material])
       @items = @items.by_case_dimensions(@params[:case_dimensions])

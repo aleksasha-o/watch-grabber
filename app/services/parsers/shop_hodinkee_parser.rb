@@ -40,7 +40,7 @@ module Parsers
     end
 
     def price
-      parse_html('.price')&.children[0]&.content&.scan(PRICE_EXPRESSION)&.join&.gsub(',', '')
+      parse_html('.price')&.children.try(:[], 0)&.content&.scan(PRICE_EXPRESSION)&.join&.gsub(',', '')
     end
 
     def dial_color
