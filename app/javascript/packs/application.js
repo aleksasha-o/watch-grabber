@@ -12,3 +12,5 @@ import 'materialize-css/dist/js/materialize'
 
 import '../src/toast'
 import '../src/tooltip'
+import '../src/slider'
+import '../src/select'

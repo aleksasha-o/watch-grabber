@@ -1,5 +1,9 @@
-<div class="container">
-  <% if @items.any? %>
+<div class="row">
+  <div class="col s3">
+    <%= render 'items/search_form', data: @data %>
+  </div>
+  <% if @data.items.any? %>
+    <div class="col s9">
       <table class="highlight centered striped responsive-table">
         <thead>
         <tr>
@@ -15,23 +19,26 @@
           <th><%= t('items.table.external_id') %></th>
         </tr>
         </thead>
-        <% @items.each do |item| %>
-        <tr>
-          <td><%= item.image_uri.present? ? image_tag(item.image_uri, height: '200') : image_pack_tag('placoholder.png', height: '200') %></td>
-          <td><%= item.brand %></td>
-          <td><%= item.model %></td>
-          <td><%= "#{item.price} #{item.currency.upcase}" %></td>
-          <td><%= item.dial_color %></td>
-          <td><%= item.case_material %></td>
-          <td><%= item.case_dimensions %></td>
-          <td><%= item.bracelet_material %></td>
-          <td><%= item.movement_type %></td>
-          <td><%= item.external_id %></td>
-        </tr>
+        <% @data.items.each do |item| %>
+          <tr>
+            <td><%= item.image_uri.present? ? image_tag(item.image_uri, height: '200') : image_pack_tag('placoholder.png', height: '200') %></td>
+            <td><%= item.brand %></td>
+            <td><%= item.model %></td>
+            <td><%= "#{item.price} #{item.currency.upcase}" %></td>
+            <td><%= item.dial_color %></td>
+            <td><%= item.case_material %></td>
+            <td><%= item.case_dimensions %></td>
+            <td><%= item.bracelet_material %></td>
+            <td><%= item.movement_type %></td>
+            <td><%= item.external_id %></td>
+          </tr>
         <% end %>
         </tbody>
       </table>
   <% else %>
-    <p class="has-text-centered is-size-6"><%= t('items.table.no_items') %></p>
+    <div class="col s9 mt-5">
+      <p class="has-text-centered is-size-6"><%= t('items.table.no_items') %></p>
+    </div>
   <% end %>
+  </div>
 </div>

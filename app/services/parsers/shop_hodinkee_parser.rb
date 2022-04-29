@@ -3,7 +3,7 @@
 module Parsers
   class ShopHodinkeeParser < BaseParser
     TAGS = [
-      ITEM          = '.tw-pc',
+      ITEM          = '.pc',
       NEXT_PAGE     = '[aria-label="next page"]',
       BRAND         = '.vendor',
       MODEL         = '//*[@id="watch-pdp"]/div/div[1]/div/div[2]/div/h1/text()',
@@ -37,6 +37,10 @@ module Parsers
 
     def model
       features[:model]&.strip || parse_content_by_tag(MODEL)[0]&.strip
+    end
+
+    def price
+      parse_html('.price')&.children.try(:[], 0)&.content&.scan(PRICE_EXPRESSION)&.join&.gsub(',', '')
     end
 
     def dial_color

@@ -2,6 +2,6 @@
 
 class ItemsController < ApplicationController
   def index
-    @items = Item.order(:brand)
+    @data = Items::Index.new(params)
   end
 end

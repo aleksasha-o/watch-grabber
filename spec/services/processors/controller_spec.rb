@@ -33,7 +33,7 @@ describe Processors::Controller do
     end
 
     it 'set correct value for parsing:run in Redis' do
-      expect(redis.get('parsing:run')).to eq(nil)
+      expect(redis.get('parsing:run')).to be_nil
     end
 
     it 'set correct value for parsing:stop:datetime in Redis' do
@@ -55,7 +55,7 @@ describe Processors::Controller do
     context 'without jobs' do
       let(:find_mock) { double(find: []) }
 
-      it { expect(redis.get('parsing:run')).to eq(nil) }
+      it { expect(redis.get('parsing:run')).to be_nil }
     end
 
     context 'with jobs' do
