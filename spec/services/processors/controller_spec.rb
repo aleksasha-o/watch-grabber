@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe Processors::Controller do
+describe Processors::Controller, redis: true do
   let(:redis) { MockRedis.new }
 
   before do

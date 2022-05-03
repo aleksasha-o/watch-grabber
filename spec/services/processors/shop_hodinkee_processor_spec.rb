@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe Processors::ShopHodinkeeProcessor do
+describe Processors::ShopHodinkeeProcessor, redis: true do
   describe '#call' do
     let(:file) { file_fixture('shophodinkee_first_page.html').read }
     let(:item_file) { file_fixture('shophodinkee_item_page.html').read }

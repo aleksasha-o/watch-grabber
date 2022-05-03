@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe BobswatchesJob do
+describe BobswatchesJob, redis: true do
   let(:bobs_file) { file_fixture('bobswatches_first_page.html').read }
   let(:bobs_url) { 'https://www.bobswatches.com/shop?page=1' }
   let(:redis) { MockRedis.new }

@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
-describe Processors::CrownandcaliberProcessor do
+describe Processors::CrownandcaliberProcessor, redis: true do
   describe '#call' do
     let(:file) { file_fixture('crownandcaliber_first_page.html').read }
     let(:item_file) { file_fixture('crownandcaliber_item_page.html').read }
     let(:created_item) { CrownandcaliberItem.find_by(model: 'Datejust') }
+
     let(:redis) { MockRedis.new }
     let(:run) { double(blank?: false) }
 

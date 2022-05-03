@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
-describe Processors::BobswatchesProcessor do
+describe Processors::BobswatchesProcessor, redis: true do
   describe '#call' do
     let(:file) { file_fixture('bobswatches_first_page.html').read }
     let(:item_file) { file_fixture('bobswatches_item_page.html').read }
     let(:created_item) { BobswatchesItem.find_by(model: 'Sky-Dweller 326934') }
+
     let(:redis) { MockRedis.new }
     let(:run) { double(blank?: false) }
 

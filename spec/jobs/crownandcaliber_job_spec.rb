@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe CrownandcaliberJob do
+describe CrownandcaliberJob, redis: true do
   let(:crown_file) { file_fixture('crownandcaliber_first_page.html').read }
   let(:crown_url) { 'https://www.crownandcaliber.com/collections/shop-for-watches?page=1' }
   let(:redis) { MockRedis.new }

@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-describe HodinkeeJob do
+describe HodinkeeJob, redis: true do
   let(:hodinkee_file) { file_fixture('shophodinkee_first_page.html').read }
   let(:hodinkee_url) { 'https://shop.hodinkee.com/collections/watches?page=1' }
   let(:redis) { MockRedis.new }
