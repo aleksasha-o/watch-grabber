@@ -5,8 +5,13 @@ describe Processors::BobswatchesProcessor do
     let(:file) { file_fixture('bobswatches_first_page.html').read }
     let(:item_file) { file_fixture('bobswatches_item_page.html').read }
     let(:created_item) { BobswatchesItem.find_by(model: 'Sky-Dweller 326934') }
+    let(:redis) { MockRedis.new }
+    let(:run) { double(blank?: false) }
 
     before do
+      allow(Redis).to receive(:current).and_return(redis)
+      allow(redis).to receive(:get).and_return(run)
+
       allow_any_instance_of(Browser).to receive(:visit)
 
       allow_any_instance_of(Browser)
