@@ -6,12 +6,18 @@ describe Processors::ShopHodinkeeProcessor do
     let(:item_file) { file_fixture('shophodinkee_item_page.html').read }
     let(:created_item) { HodinkeeItem.find_by(model: 'Prospex SLA043 Limited Edition') }
 
+    let(:redis) { MockRedis.new }
+    let(:run) { double(blank?: false) }
+
     before do
+      allow(Redis).to receive(:current).and_return(redis)
+      allow(redis).to receive(:get).and_return(run)
+
       allow_any_instance_of(Browser).to receive(:visit)
 
       allow_any_instance_of(Browser)
         .to receive(:visit)
-        .with(url: 'https://shop.hodinkee.com/collections/watches?page=1', tag: '.tw-pc')
+        .with(url: 'https://shop.hodinkee.com/collections/watches?page=1', tag: '.pc')
         .and_return(file)
     end
 
@@ -20,7 +26,7 @@ describe Processors::ShopHodinkeeProcessor do
         allow_any_instance_of(Browser)
           .to receive(:visit)
           .with(url: 'https://shop.hodinkee.com/collections/watches/products/bamford-x-peanuts-joe-preppy-gmt-limited-edition-for-hodinkee',
-                tag: '.tw-pc')
+                tag: '.section-title')
           .and_return(item_file)
 
         subject.call
@@ -47,7 +53,7 @@ describe Processors::ShopHodinkeeProcessor do
         allow_any_instance_of(Browser)
           .to receive(:visit)
           .with(url: 'https://shop.hodinkee.com/collections/watches/products/bamford-x-peanuts-joe-preppy-gmt-limited-edition-for-hodinkee',
-                tag: '.tw-pc')
+                tag: '.section-title')
           .and_return(file)
 
         subject.call

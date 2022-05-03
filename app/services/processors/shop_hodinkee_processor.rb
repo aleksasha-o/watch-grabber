@@ -3,8 +3,8 @@
 module Processors
   class ShopHodinkeeProcessor < BaseProcessor
     TAGS = [
-      PAGE = '.tw-pc',
-      ITEM = '.tw-pc'
+      PAGE = '.pc',
+      ITEM = '.section-title'
     ].freeze
 
     HOST = 'https://shop.hodinkee.com'

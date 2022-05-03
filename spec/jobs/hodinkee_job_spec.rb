@@ -24,7 +24,7 @@ describe HodinkeeJob do
       allow_any_instance_of(Browser)
         .to receive(:visit)
         .with(url: 'https://shop.hodinkee.com/collections/watches/products/bamford-x-peanuts-joe-preppy-gmt-limited-edition-for-hodinkee',
-              tag: '.tw-pc')
+              tag: '.pc')
         .and_return(hodinkee_item_file)
     end
 
