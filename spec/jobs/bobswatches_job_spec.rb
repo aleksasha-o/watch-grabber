@@ -3,8 +3,13 @@
 describe BobswatchesJob do
   let(:bobs_file) { file_fixture('bobswatches_first_page.html').read }
   let(:bobs_url) { 'https://www.bobswatches.com/shop?page=1' }
+  let(:redis) { MockRedis.new }
+  let(:run) { double(blank?: false) }
 
   before do
+    allow(Redis).to receive(:current).and_return(redis)
+    allow(redis).to receive(:get).and_return(run)
+
     allow_any_instance_of(Browser).to receive(:visit)
 
     allow_any_instance_of(Browser)
