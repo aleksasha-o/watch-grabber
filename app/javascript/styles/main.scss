@@ -1,6 +1,10 @@
 @import 'materialize-css/dist/css/materialize';
 @import './fonts';
 
+h1, h2, h3, h4, h5, h6 {
+  color: #004d40;
+}
+
 .mt-5 {
   margin-top: 50px;
 }
@@ -9,14 +13,8 @@
   margin-top: 30px;
 }
 
-.link-to-text-color {
-  display: flex;
-  align-items: center;
-  color: black;
-}
-
-.link-to-text-color:hover {
-  color: #80cbc4;
+.mt-1 {
+  margin-top: 10px;
 }
 
 .fixed-container {
@@ -25,4 +23,26 @@
   left: 15%;
   transform: translateX(-58%);
   width: 25%;
+}
+
+.links-sessions {
+  margin: 0 20px;
+  color: #4db6ac;
+}
+
+.links-sessions:hover {
+  color: #004d40;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+}
+
+label.error {
+  color: red;
+}
+
+label.error.active {
+  color: #9e9e9e;
 }

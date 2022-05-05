@@ -7,6 +7,7 @@ ruby '3.0.0'
 gem 'rails', '~> 6.0.3'
 
 gem 'activerecord-postgres_enum'
+gem 'devise'
 gem 'ferrum'
 gem 'mock_redis'
 gem 'nokogiri', '>= 1.13.2'

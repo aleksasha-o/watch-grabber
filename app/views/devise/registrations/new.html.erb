@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="mt-5 center">
+    <h2><%= t('session.signup') %></h2>
+    <div class="flex-center">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render 'devise/shared/error_messages', resource: resource %>
+
+        <div class="input-field">
+          <i class="material-icons prefix">email</i>
+          <%= f.label :email %>
+          <%= f.email_field :email %>
+        </div>
+
+        <div class="input-field">
+          <i class="material-icons prefix">lock</i>
+          <%= f.label :password %>
+          <%= f.password_field :password, data: { length: resource_class.password_length.max } %>
+          <span class="helper-text"><%= "#{@minimum_password_length} #{t('session.min_char')}" if @minimum_password_length %></span>
+        </div>
+
+        <div class="input-field">
+          <i class="material-icons prefix">lock</i>
+          <%= f.label :confirm_password %>
+          <%= f.password_field :confirm_password, data: { length: resource_class.password_length.max } %>
+        </div>
+
+        <div class="actions">
+          <%= f.button t('session.signup'), type: 'submit', class: 'btn waves-effect' %>
+      <% end %>
+      </div>
+    </div>
+
+    <%= render 'devise/shared/links' %>
+  </div>
+</div>

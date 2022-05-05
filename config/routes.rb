@@ -10,8 +10,11 @@ Rails.application.routes.draw do
   draw :sidekiq
 
   root 'items#index'
+
+  devise_for :admins
+
   resources :items, only: %i[index]
-  namespace :admin do
+  namespace :admins do
     resources :processors, only: %i[index create]
     resource :processors, only: %i[destroy]
   end
