@@ -1,14 +1,13 @@
 # frozen_string_literal: true
 
-describe HodinkeeJob, redis: true do
+describe HodinkeeJob do
+  include_context 'with Redis'
+
   let(:hodinkee_file) { file_fixture('shophodinkee_first_page.html').read }
   let(:hodinkee_url) { 'https://shop.hodinkee.com/collections/watches?page=1' }
-  let(:redis) { MockRedis.new }
-  let(:run) { double(blank?: false) }
 
   before do
-    allow(Redis).to receive(:current).and_return(redis)
-    allow(redis).to receive(:get).and_return(run)
+    redis.set('parsing:run', true)
 
     allow_any_instance_of(Browser).to receive(:visit)
 

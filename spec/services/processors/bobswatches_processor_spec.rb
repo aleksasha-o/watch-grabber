@@ -1,17 +1,15 @@
 # frozen_string_literal: true
 
-describe Processors::BobswatchesProcessor, redis: true do
+describe Processors::BobswatchesProcessor do
+  include_context 'with Redis'
+
   describe '#call' do
     let(:file) { file_fixture('bobswatches_first_page.html').read }
     let(:item_file) { file_fixture('bobswatches_item_page.html').read }
     let(:created_item) { BobswatchesItem.find_by(model: 'Sky-Dweller 326934') }
 
-    let(:redis) { MockRedis.new }
-    let(:run) { double(blank?: false) }
-
     before do
-      allow(Redis).to receive(:current).and_return(redis)
-      allow(redis).to receive(:get).and_return(run)
+      redis.set('parsing:run', true)
 
       allow_any_instance_of(Browser).to receive(:visit)
 

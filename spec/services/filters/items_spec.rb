@@ -11,7 +11,7 @@ describe Filters::Items do
     context 'with one correct search params' do
       let(:params) { { model: 'Datejust' } }
 
-      it { expect(subject).to eq([item1, item2]) }
+      it { expect(subject).to match_array([item1, item2]) }
     end
 
     context 'with two correct search params' do
@@ -23,13 +23,13 @@ describe Filters::Items do
     context 'with wrong search params' do
       let(:params) { { model: 'Wrong' } }
 
-      it { expect(subject).not_to eq([item1, item2]) }
+      it { expect(subject).not_to include(item1, item2) }
     end
 
     context 'without search params' do
       let(:params) { {} }
 
-      it { expect(subject).to eq([item1, item2, item3]) }
+      it { expect(subject).to match_array([item1, item2, item3]) }
     end
 
     context 'sort ascending by brand' do
