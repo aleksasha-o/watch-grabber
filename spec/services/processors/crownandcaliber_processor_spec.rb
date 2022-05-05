@@ -1,12 +1,16 @@
 # frozen_string_literal: true
 
 describe Processors::CrownandcaliberProcessor do
+  include_context 'with Redis'
+
   describe '#call' do
     let(:file) { file_fixture('crownandcaliber_first_page.html').read }
     let(:item_file) { file_fixture('crownandcaliber_item_page.html').read }
     let(:created_item) { CrownandcaliberItem.find_by(model: 'Datejust') }
 
     before do
+      redis.set('parsing:run', true)
+
       allow_any_instance_of(Browser).to receive(:visit)
 
       allow_any_instance_of(Browser)

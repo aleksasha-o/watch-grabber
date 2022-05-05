@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Item < ApplicationRecord
+  TYPES = %w[HodinkeeItem CrownandcaliberItem BobswatchesItem].freeze
+
   enum currency: {
     usd: 'usd',
     eur: 'eur',

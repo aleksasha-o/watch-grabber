@@ -1,10 +1,14 @@
 # frozen_string_literal: true
 
 describe CrownandcaliberJob do
+  include_context 'with Redis'
+
   let(:crown_file) { file_fixture('crownandcaliber_first_page.html').read }
   let(:crown_url) { 'https://www.crownandcaliber.com/collections/shop-for-watches?page=1' }
 
   before do
+    redis.set('parsing:run', true)
+
     allow_any_instance_of(Browser).to receive(:visit)
 
     allow_any_instance_of(Browser)

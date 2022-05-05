@@ -1,3 +1,8 @@
 # frozen_string_literal: true
 
-Redis.current = Redis.new(url: ENV['REDIS_URL'] || 'redis://localhost:6379/1')
+fallback = if ENV['REDIS_URL'].present?
+             ENV['REDIS_URL']
+           else
+             Rails.env.test? ? 'redis://localhost:6379/2' : 'redis://localhost:6379/1'
+           end
+Redis.current = Redis.new(url: fallback)

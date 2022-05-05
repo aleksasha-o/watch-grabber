@@ -1,10 +1,14 @@
 # frozen_string_literal: true
 
 describe HodinkeeJob do
+  include_context 'with Redis'
+
   let(:hodinkee_file) { file_fixture('shophodinkee_first_page.html').read }
   let(:hodinkee_url) { 'https://shop.hodinkee.com/collections/watches?page=1' }
 
   before do
+    redis.set('parsing:run', true)
+
     allow_any_instance_of(Browser).to receive(:visit)
 
     allow_any_instance_of(Browser)
@@ -24,7 +28,7 @@ describe HodinkeeJob do
       allow_any_instance_of(Browser)
         .to receive(:visit)
         .with(url: 'https://shop.hodinkee.com/collections/watches/products/bamford-x-peanuts-joe-preppy-gmt-limited-edition-for-hodinkee',
-              tag: '.tw-pc')
+              tag: '.section-title')
         .and_return(hodinkee_item_file)
     end
 

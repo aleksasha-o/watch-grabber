@@ -1,11 +1,7 @@
 # frozen_string_literal: true
 
 describe Processors::Controller do
-  let(:redis) { MockRedis.new }
-
-  before do
-    allow(Redis).to receive(:current).and_return(redis)
-  end
+  include_context 'with Redis'
 
   describe '#run' do
     before do
