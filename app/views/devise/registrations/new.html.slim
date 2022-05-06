@@ -1,0 +1,24 @@
+.container
+  .mt-5.center
+    h2
+      = t('session.signup')
+    .flex-center
+      = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+        = render 'devise/shared/error_messages', resource: resource
+        .input-field
+          i.material-icons.prefix email
+          = f.label :email
+          = f.email_field :email
+        .input-field
+          i.material-icons.prefix lock
+          = f.label :password
+          = f.password_field :password, data: { length: resource_class.password_length.max }
+          span.helper-text
+            = "#{@minimum_password_length} #{t('session.min_char')}" if @minimum_password_length
+        .input-field
+          i.material-icons.prefix lock
+          = f.label :confirm_password
+          = f.password_field :confirm_password, data: { length: resource_class.password_length.max }
+        .actions
+          = f.button t('session.signup'), type: 'submit', class: 'btn waves-effect'
+  = render 'devise/shared/links'

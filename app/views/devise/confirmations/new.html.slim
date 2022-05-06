@@ -1,0 +1,14 @@
+.container
+  .mt-5.center
+    h2
+      = t('session.resend')
+    .flex-center
+      = form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f|
+        = render 'devise/shared/error_messages', resource: resource
+        .input-field
+          i.material-icons.prefix email
+          = f.label :email, for: 'admin_email'
+          = f.email_field :email
+        .actions
+          = f.button t('session.resend'), type: 'submit', class: 'btn waves-effect'
+  = render 'devise/shared/links'

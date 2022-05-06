@@ -1,0 +1,126 @@
+.fixed-container
+  = form_with url: items_path, method: :get, data: { remote: false } do |f|
+    .form-group
+      .row
+        .col.s6
+          p
+          label
+            = f.radio_button :sort, 'brandASC', checked: params[:sort].eql?('brandASC')
+            span
+              | Brand ASC
+              i.right.material-icons arrow_drop_down
+          p
+          label
+            = f.radio_button :sort, 'brandDESC', checked: params[:sort].eql?('brandDESC')
+            span
+              | Brand DESC
+              i.right.material-icons arrow_drop_up
+
+        .col.s6
+          p
+            label
+              = f.radio_button :sort, 'priceASC', checked: params[:sort].eql?('priceASC')
+              span
+                | Price ASC
+                i.right.material-icons arrow_drop_down
+          p
+            label
+              = f.radio_button :sort, 'priceDESC', checked: params[:sort].eql?('priceDESC')
+              span
+                | Price DESC
+                i.right.material-icons arrow_drop_up
+
+        .col.s12
+          .input-field.mt-3
+            = f.select :brands,
+                    options_for_select(data.brands_for_select, params[:brands]),
+                    { include_hidden: false, prompt: false },
+                    multiple: true,
+                    data: { placeholder: t('items.search_hint.brand') }
+            = f.label :brands
+          .input-field.mt-3
+            = f.search_field :model,
+                    placeholder: t('items.search_hint.model'),
+                    type: 'text',
+                    class: 'validate',
+                    value: params[:model]
+            = f.label :model
+          .form-group
+            = f.label :price
+            .row
+              .col.s6
+                = f.text_field :price_gteq,
+                        class: 'form-control',
+                        id: 'min-price-output',
+                        data: { default: data.default_min_price },
+                        value: params[:price_gteq]
+              .col.s6
+                = f.text_field :price_lteq,
+                        class: 'form-control',
+                        id: 'max-price-output',
+                        data: { default: data.default_max_price },
+                        value: params[:price_lteq]
+          .price-slider[style="margin-bottom: 50px"]
+          .row
+            .col.s6
+              .input-field.mt-3
+                = f.search_field :dial_color,
+                        placeholder: t('items.search_hint.dial_color'),
+                        type: 'text',
+                        class: 'validate',
+                        value: params[:dial_color],
+                        list: 'colors'
+                datalist#colors
+                  - t('items.predefined_values.colors', default: {}).sort.each do |value|
+                    |  <option value="
+                    = value
+                    | ">
+                = f.label :dial_color
+            .col.s6
+              .input-field.mt-3
+                = f.search_field :case_dimensions,
+                        placeholder: t('items.search_hint.case_dimensions'),
+                        type: 'text',
+                        class: 'validate',
+                        value: params[:case_dimensions]
+                = f.label :case_dimensions
+          .input-field.mt-3
+            = f.search_field :case_material,
+                    placeholder: t('items.search_hint.case_material'),
+                    type: 'text',
+                    class: 'validate',
+                    value: params[:case_material],
+                    list: 'case-materials'
+            datalist#case-materials
+              - t('items.predefined_values.case_materials', default: {}).sort.each do |value|
+                |  <option value="
+                = value
+                | ">
+            = f.label :case_material
+          .input-field.mt-3
+            = f.search_field :bracelet_material,
+                    placeholder: t('items.search_hint.bracelet_material'),
+                    type: 'text',
+                    class: 'validate',
+                    value: params[:bracelet_material],
+                    list: 'bracelet-materials'
+            datalist#bracelet-materials
+              - t('items.predefined_values.bracelet_materials', default: {}).sort.each do |value|
+                |  <option value="#{value}">
+            = f.label :bracelet_material
+          .input-field.mt-3
+            = f.search_field :movement_type,
+                    placeholder: t('items.search_hint.movement_type'),
+                    type: 'text',
+                    class: 'validate',
+                    value: params[:movement_type],
+                    list: 'movements'
+            datalist#movements
+              - t('items.predefined_values.movements', default: {}).sort.each do |value|
+                |  <option value="#{value}">
+            = f.label :movement_type
+          .center
+            div[style="display: inline-block"]
+              button.btn.waves-effect[type="submit"]
+                | Search
+              = link_to 'Clear', request.path, class: 'btn waves-effect'

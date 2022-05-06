@@ -1,0 +1,55 @@
+.row
+  .col.s3
+    = render 'items/search_form', data: @data
+  - if @data.items.any?
+    .col.s9
+      table.highlight.centered.striped.responsive-table
+        thead
+          tr
+            th
+              = 'Image'
+            th
+              = t('items.table.brand')
+            th
+              = t('items.table.model')
+            th
+              = t('items.table.price')
+            th
+              = t('items.table.dial')
+            th
+              = t('items.table.case_material')
+            th
+              = t('items.table.case_dimensions')
+            th
+              = t('items.table.bracelet')
+            th
+              = t('items.table.movement')
+            th
+              = t('items.table.external_id')
+        - @data.items.each do |item|
+          tr
+            td
+              = item.image_uri.present? ? image_tag(item.image_uri, height: '200') : image_pack_tag('placoholder.png', height: '200')
+            td
+              = item.brand
+            td
+              = item.model
+            td
+              = "#{item.price} #{item.currency.upcase}"
+            td
+              = item.dial_color
+            td
+              = item.case_material
+            td
+              = item.case_dimensions
+            td
+              = item.bracelet_material
+            td
+              = item.movement_type
+            td
+              = item.external_id
+  - else
+    .col.s9.mt-5
+
+      p.has-text-centered.is-size-6
+        = t('items.table.no_items')

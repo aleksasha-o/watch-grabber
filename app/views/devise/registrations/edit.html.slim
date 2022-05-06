@@ -1,0 +1,44 @@
+.container
+  .mt-5.center
+    h2
+      = t('session.edit')
+    .flex-center
+      = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+        = render 'devise/shared/error_messages', resource: resource
+        .input-field
+          i.material-icons.prefix email
+          = f.label :email
+          = f.email_field :email
+        - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+          div
+            = "#{t('session.wait_confirm')} #{resource.unconfirmed_email}"
+        .input-field
+          i.material-icons.prefix lock
+          = f.label :new_password
+          = f.password_field :new_password, data: { length: resource_class.password_length.max }
+          span.helper-text
+            = "#{resource_class.password_length.min} #{t('session.min_char')}"
+        .input-field
+          i.material-icons.prefix lock
+          = f.label :repeat_new_password
+          = f.password_field :repeat_new_password, data: { length: resource_class.password_length.max }
+        .input-field
+          i.material-icons.prefix lock
+          = f.label :current_password
+          = f.password_field :current_password
+          span.helper-text
+            = t('session.need_current')
+        .actions
+          = f.button t('session.changepass'), type: 'submit', class: 'btn waves-effect'
+    .row.mt-1
+      = link_to t('session.delete_acc'), '#modal1', class: 'grey waves-effect btn modal-trigger'
+      #modal1.modal
+        .modal-content
+          h4
+            = t('session.delete_acc')
+          p
+            = t('session.sure')
+        .modal-footer
+          = link_to t('session.confirm_delete'), registration_path(resource_name), method: :delete, class: 'grey btn waves-effect'
+          = link_to t('session.back'), '#', class: 'teal modal-close btn waves-effect'
+      = link_to t('session.logout'), destroy_admin_session_path, method: :delete, class: 'red btn waves-effect'

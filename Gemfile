@@ -17,6 +17,7 @@ gem 'redis-rails'
 gem 'sidekiq'
 gem 'sidekiq-limit_fetch'
 gem 'sidekiq-scheduler'
+gem 'slim-rails'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server

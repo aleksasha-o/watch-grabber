@@ -1,0 +1,18 @@
+.container
+  .mt-5.center
+    .center-align.tooltipped data-position="bottom" data-tooltip="#{t('processors.start_date', datetime: @redis.get('parsing:run:datetime'))}" style=("display: inline-block")
+      = link_to admins_processors_path,
+              class: "waves-effect btn-large teal lighten-1 #{'disabled' if @redis.get('parsing:run').present?}",
+              method: :post do
+        | Run
+        i.material-icons.right play_arrow
+    .center-align.tooltipped data-position="bottom" data-tooltip="#{t('processors.stop_date', datetime: @redis.get('parsing:stop:datetime'))}" style=("display: inline-block")
+      = link_to admins_processors_path,
+              class: "waves-effect btn-large red lighten-1 #{'disabled' if @redis.get('parsing:run').blank?}",
+              method: :delete do
+        | Stop
+        i.material-icons.right stop
+  .mt-5
+    - if @redis.get('parsing:run').present?
+      .progress
+        .indeterminate
