@@ -11,6 +11,7 @@ require 'webmock/rspec'
 require 'faker'
 require 'factory_bot_rails'
 require 'sidekiq/testing'
+require 'devise'
 # Add additional requires below this line. Rails is not loaded until this point!
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
@@ -87,4 +88,7 @@ RSpec.configure do |config|
     # Warn when jobs are not enqueued to Redis but to a job array
     config.warn_when_jobs_not_processed_by_sidekiq = false # default => true
   end
+
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include FactoryBot::Syntax::Methods
 end
