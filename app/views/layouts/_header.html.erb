@@ -4,8 +4,16 @@
       <%= image_pack_tag 'logo.png' %>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li>
-          <%= link_to admin_processors_path do %>
-            <i class="material-icons left">slideshow</i>
+          <% if admin_signed_in? %>
+            <%= link_to edit_admin_registration_path do %>
+              <i class="material-icons left">person</i>
+              <%= t('session.profile') %>
+            <% end %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to admins_processors_path do %>
+            <i class="material-icons left">play_arrow</i>
             <%= t('processors.nav') %>
           <% end %>
         </li>

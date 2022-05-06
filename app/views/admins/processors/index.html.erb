@@ -4,7 +4,7 @@
          class="center-align tooltipped"
          data-position="bottom"
          data-tooltip="<%= t('processors.start_date', datetime: @redis.get('parsing:run:datetime')) %>">
-      <%= link_to admin_processors_path,
+      <%= link_to admins_processors_path,
                   class: "waves-effect btn-large teal lighten-1 #{'disabled' if @redis.get('parsing:run').present?}",
                   method: :post do %>
                     Run
@@ -16,7 +16,7 @@
          class="center-align tooltipped"
          data-position="bottom"
          data-tooltip="<%= t('processors.stop_date', datetime: @redis.get('parsing:stop:datetime')) %>">
-      <%= link_to admin_processors_path,
+      <%= link_to admins_processors_path,
                   class: "waves-effect btn-large red lighten-1 #{'disabled' if @redis.get('parsing:run').blank?}",
                   method: :delete do %>
                     Stop

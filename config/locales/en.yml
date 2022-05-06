@@ -6,6 +6,30 @@ en:
     stop: Process has been stopped
     stop_date: 'Last Cancellation: %{datetime}'
 
+  session:
+    profile: Profile
+    login: Log in
+    logout: Log Out
+    signup: Sign up
+    forgot: Forgot your password?
+    confirm: Didn't receive confirmation instructions?
+    receive: Didn't receive unlock instructions?
+    resend: Resend confirmation instructions
+    signinwith: Sign in with
+    newpass: New password
+    confirmnewpass: Confirm new password
+    changepass: Change my password
+    sendreset: Send me reset password instructions
+    delete_acc: Delete my account
+    sure: Are you sure you want to delete your account?
+    edit: Edit profile
+    need_current: (we need your current password to confirm your changes)
+    min_char: characters minimum
+    wait_confirm: Currently waiting confirmation for
+    unlock: Resend unlock instructions
+    back: back
+    confirm_delete: Yes, I still want to do it!
+
   items:
     nav: Watches
     table:
