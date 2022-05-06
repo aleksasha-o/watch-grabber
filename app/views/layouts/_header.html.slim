@@ -1,0 +1,20 @@
+.navbar-fixed
+  nav.teal
+    .container.nav-wrapper
+      = image_pack_tag 'logo.png'
+      ul#nav-mobile.right.hide-on-med-and-down
+        li
+          - if admin_signed_in?
+            = link_to edit_admin_registration_path do
+              i.material-icons.left person
+              = t('session.profile')
+        li
+          = link_to admins_processors_path do
+            i.material-icons.left play_arrow
+            = t('processors.nav')
+        li
+          = link_to items_path do
+            i.material-icons.left watch
+            = t('items.nav')
+            span.new.badge.teal.darken-3[data-badge-caption=""]
+              = @item_numbers
