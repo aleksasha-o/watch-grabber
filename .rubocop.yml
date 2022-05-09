@@ -12,6 +12,7 @@ AllCops:
     - 'tmp/**/*'
     - 'vendor/**/*'
     - 'schema.rb'
+    - 'config/initializers/devise.rb'
 
 Style/Documentation:
   Enabled: false

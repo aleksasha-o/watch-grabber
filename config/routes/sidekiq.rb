@@ -7,7 +7,8 @@ def sha256_digest(value)
 end
 
 def secure_compare(string, key)
-  sidekiq_web_credentials = { username: ENV['SIDEKIQ_USERNAME'], password: ENV['SIDEKIQ_PASSWORD'] }
+  sidekiq_web_credentials = { username: ENV.fetch('SIDEKIQ_USERNAME', nil),
+                              password: ENV.fetch('SIDEKIQ_PASSWORD', nil) }
   expected_credential = sidekiq_web_credentials && sidekiq_web_credentials[key]
   return false if [string, expected_credential].any?(&:nil?)
 

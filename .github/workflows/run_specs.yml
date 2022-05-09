@@ -1,44 +1,47 @@
-env:
-  RUBY_VERSION: 3.0.0
-  POSTGRES_USER: postgres
-  POSTGRES_PASSWORD: postgres
-  POSTGRES_DB: WatchGrabber_production
-  DEVISE_JWT_SECRET_KEY: ${{ secrets.DEVISE_JWT_SECRET_KEY }}
-
 name: Rails Specs
-on: [push,pull_request]
+on: [push]
 jobs:
   rspec-test:
-    name: RSpec
-    runs-on: ubuntu-20.04
+    name: Rubocop/RSpec
+    runs-on: ubuntu-latest
     services:
       postgres:
-        image: postgres:latest
+        image: postgres:14.2
         ports:
           - 5432:5432
         env:
-          POSTGRES_USER: ${{ env.POSTGRES_USER }}
-          POSTGRES_PASSWORD: ${{ env.POSTGRES_PASSWORD }}
+          POSTGRES_DB: test
+          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+
+      redis:
+        image: redis:5.0.7
+        ports:
+          - 6379:6379
+        options: --entrypoint redis-server
+
     steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-ruby@v1
+      - uses: actions/checkout@v3
+      - uses: ruby/setup-ruby@359bebbc29cbe6c87da6bc9ea3bc930432750108
         with:
           ruby-version: ${{ env.RUBY_VERSION }}
+
       - name: Install postgres client
         run: sudo apt-get install libpq-dev
+
       - name: Install dependencies
         run: |
           gem install bundler
           bundler install
-      - name: Create database
+
+      - name: Run Rubocop
         run: |
-          bundler exec rails db:create RAILS_ENV=test
-          bundler exec rails db:migrate RAILS_ENV=test
-      - name: Run tests
-        run: bundler exec rspec spec/*
-      - name: Upload coverage results
-        uses: actions/upload-artifact@master
-        if: always()
-        with:
-          name: coverage-report
-          path: coverage
+          bundle exec rubocop
+
+      - name: Run RSpec
+        run: |
+          bundle exec rake db:create db:schema:load
+          COVERAGE=true bundle exec rspec  --require rails_helper
+        env:
+          RAILS_ENV: test
+          DATABASE_URL: postgres://postgres:@localhost:5432/test
+          REDIS_URL: redis://localhost:6379/0
