@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 describe Items::Index do
-
   subject { described_class.new(params: params) }
 
   let!(:item1) { create(:item, brand: 'Rolex', model: 'Datejust', price: '10') }
