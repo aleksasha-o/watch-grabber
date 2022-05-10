@@ -1,8 +1,9 @@
-name: Rails Build
-on: [push]
+name: Rails Rspec
+on: push
+
 jobs:
   rspec-test:
-    name: Rubocop/RSpec
+    name: RSpec
     environment: test
     runs-on: ubuntu-latest
 
@@ -43,15 +44,5 @@ jobs:
       - name: Setup Database
         run: bundle exec rake db:create db:schema:load
 
-      - name: Run Rubocop
-        run: bundle exec rubocop
-
       - name: Run RSpec
         run: COVERAGE=true bundle exec rspec  --require rails_helper
-
-
-      - uses: akhileshns/heroku-deploy@v3.12.12
-        with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
-          heroku_email: ${{secrets.HEROKU_EMAIL}}
