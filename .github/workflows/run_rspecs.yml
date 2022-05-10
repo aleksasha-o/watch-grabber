@@ -1,5 +1,9 @@
 name: Rails Rspec
-on: push
+on:
+  workflow_run:
+    workflows: ["Rubocop"]
+    types:
+      - completed
 
 jobs:
   rspec-test:
