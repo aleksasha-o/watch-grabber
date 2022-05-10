@@ -1,17 +1,24 @@
-name: Rails Specs
+name: Rails Build
 on: [push]
 jobs:
   rspec-test:
     name: Rubocop/RSpec
+    environment: test
     runs-on: ubuntu-latest
+
+    env:
+      RAILS_ENV: test
+      RUBY_VERSION: 3.0.0
+      DEVISE_JWT_SECRET_KEY: ${{ secrets.DEVISE_JWT_SECRET_KEY }}
+      DATABASE_URL: postgresql://postgres:${{ secrets.POSTGRES_PASSWORD }}@localhost:5432/WatchGrabber_test
+
     services:
       postgres:
         image: postgres:14.2
         ports:
           - 5432:5432
         env:
-          POSTGRES_DB: test
-          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+          POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
 
       redis:
         image: redis:5.0.7
@@ -33,15 +40,11 @@ jobs:
           gem install bundler
           bundler install
 
+      - name: Setup Database
+        run: bundle exec rake db:create db:schema:load
+
       - name: Run Rubocop
-        run: |
-          bundle exec rubocop
+        run: bundle exec rubocop
 
       - name: Run RSpec
-        run: |
-          bundle exec rake db:create db:schema:load
-          COVERAGE=true bundle exec rspec  --require rails_helper
-        env:
-          RAILS_ENV: test
-          DATABASE_URL: postgres://postgres:@localhost:5432/test
-          REDIS_URL: redis://localhost:6379/0
+        run: COVERAGE=true bundle exec rspec  --require rails_helper
