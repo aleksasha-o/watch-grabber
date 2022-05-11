@@ -1,10 +1,9 @@
-name: Rails Rspec
+name: CI
 on: push
 
 jobs:
   rubocop:
     name: Rubocop
-    environment: test
     runs-on: ubuntu-latest
 
     env:
@@ -75,7 +74,7 @@ jobs:
     runs-on: ubuntu-latest
     environment: test
     needs: rspec-test
-    if: github.ref == 'refs/heads/WG-34-Add-Github-actions'
+    if: github.ref == 'refs/heads/main'
 
     steps:
       - uses: actions/checkout@v3
