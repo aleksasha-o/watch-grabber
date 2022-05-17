@@ -3,6 +3,8 @@
 class Item < ApplicationRecord
   TYPES = %w[HodinkeeItem CrownandcaliberItem BobswatchesItem].freeze
 
+  has_many :cart_items, dependent: :destroy
+
   enum currency: {
     usd: 'usd',
     eur: 'eur',

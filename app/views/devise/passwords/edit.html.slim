@@ -1,18 +1,18 @@
 .container
   .mt-5.center
     h2
-      = t('session.changepass')
+      = t('session.change_pass')
     .flex-center
       = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
         = render 'devise/shared/error_messages', resource: resource
         = f.hidden_field :reset_password_token
         .input-field
-          = f.label :password, t('session.newpass')
+          = f.label :password, t('session.new_pass')
           = f.password_field :password
         .input-field
-          = f.label :password_confirmation, t('session.confirmnewpass')
+          = f.label :password_confirmation, t('session.confirm_new_pass')
           br
           = f.password_field :password_confirmation, data: { length: resource_class.password_length.max }
         .actions
-          = f.button t('session.changepass'), type: 'submit', class: 'btn waves-effect'
+          = f.button t('session.change_pass'), type: 'submit', class: 'btn waves-effect'
   = render 'devise/shared/links'

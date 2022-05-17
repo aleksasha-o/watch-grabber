@@ -7,7 +7,12 @@
           - if admin_signed_in?
             = link_to edit_admin_registration_path do
               i.material-icons.left person
-              = t('session.profile')
+              = t('session.admin_profile')
+        li
+          - if user_signed_in?
+            = link_to edit_user_registration_path do
+              i.material-icons.left person
+              = t('session.user_profile')
         li
           = link_to admins_processors_path do
             i.material-icons.left play_arrow
@@ -18,3 +23,6 @@
             = t('items.nav')
             span.new.badge.teal.darken-3[data-badge-caption=""]
               = @item_numbers
+        li
+          = link_to cart_items_path do
+            i.material-icons.left shopping_cart
