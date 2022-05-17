@@ -8,7 +8,9 @@ class CartItemsController < ApplicationController
   end
 
   def create
-    CartItem.create(item_id: params[:item_id], user_id: params[:user_id])
+    @cart_item = CartItem.create(cart_item_params)
+
+    return redirect_to items_path, alert: t('error') if @cart_item.errors.any?
 
     redirect_to items_path, notice: t('cart.add')
   end
@@ -17,5 +19,11 @@ class CartItemsController < ApplicationController
     CartItem.find_by(item_id: params[:item_id]).destroy!
 
     redirect_to cart_items_path, notice: t('cart.delete')
+  end
+
+  private
+
+  def cart_item_params
+    params.permit(:item_id, :user_id)
   end
 end

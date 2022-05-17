@@ -2,14 +2,12 @@
 
 module CartItems
   class Index
-    def initialize(current_user)
-      @current_user = current_user
+    def initialize(user)
+      @user = user
     end
 
     def items_in_cart
-      CartItem.all.map do |cart_item|
-        Item.find(cart_item.item_id) if cart_item.user_id.to_i == @current_user.id
-      end
+      Item.joins(:cart_items).where(cart_items: { user_id: @user.id })
     end
 
     def total_in_cart

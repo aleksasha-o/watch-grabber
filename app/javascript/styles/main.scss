@@ -1,25 +1,15 @@
 @import 'materialize-css/dist/css/materialize';
 @import './fonts';
 
-h1, h2, h3, h4, h5, h6 {
-  color: #004d40;
-}
+h1, h2, h3, h4, h5, h6 { color: #004d40; }
 
-.mt-5 {
-  margin-top: 50px;
-}
+.mt-5 { margin-top: 50px; }
 
-.mt-3 {
-  margin-top: 30px;
-}
+.mt-3 { margin-top: 30px; }
 
-.mt-1 {
-  margin-top: 10px;
-}
+.mt-1 { margin-top: 10px; }
 
-.wd-5 {
-  width: 50%;
-}
+.wd-5 { width: 50%; }
 
 .fixed-container {
   position: fixed;
@@ -34,19 +24,13 @@ h1, h2, h3, h4, h5, h6 {
   color: #4db6ac;
 }
 
-.links-sessions:hover {
-  color: #004d40;
-}
+.links-sessions:hover { color: #004d40; }
 
 .flex-center {
   display: flex;
   justify-content: center;
 }
 
-label.error {
-  color: red;
-}
+label.error { color: red; }
 
-label.error.active {
-  color: #9e9e9e;
-}
+label.error.active { color: #9e9e9e; }

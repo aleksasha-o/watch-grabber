@@ -2,9 +2,9 @@
 
 module Items
   class Index
-    def initialize(params, current_user)
+    def initialize(params, user)
       @params = params
-      @current_user = current_user
+      @user = user
     end
 
     def items
@@ -26,13 +26,13 @@ module Items
     end
 
     def item_in_cart?(current_item)
-      @current_user.present? && item_ids.include?(current_item.id)
+      @user.present? && item_ids.include?(current_item.id)
     end
 
     private
 
     def item_ids
-      @item_ids ||= CartItem.where(user_id: @current_user.id).pluck(:item_id)
+      @item_ids ||= CartItem.where(user_id: @user.id).pluck(:item_id)
     end
   end
 end
