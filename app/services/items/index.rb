@@ -2,8 +2,9 @@
 
 module Items
   class Index
-    def initialize(params)
+    def initialize(params, user)
       @params = params
+      @user = user
     end
 
     def items
@@ -17,11 +18,21 @@ module Items
     end
 
     def default_min_price
-      Item.pluck(:price)&.min&.round
+      Item.minimum(:price)
     end
 
     def default_max_price
-      Item.pluck(:price)&.max&.round
+      Item.maximum(:price)
+    end
+
+    def in_cart?(current_item)
+      @user.present? && item_ids.include?(current_item.id)
+    end
+
+    private
+
+    def item_ids
+      @item_ids ||= @user.item_ids
     end
   end
 end

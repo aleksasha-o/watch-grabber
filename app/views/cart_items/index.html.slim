@@ -1,0 +1,24 @@
+.mt-5.flex-center
+  .wd-5
+    h2.center
+      = t('cart.title')
+    - if @data.items_in_cart.present?
+      - @data.items_in_cart.each do |item|
+        ul.collection
+          li.collection-item.avatar
+            = item.image_uri.present? ? image_tag(item.image_uri, height: '50', class: 'circle materialboxed') : image_pack_tag('placoholder.png', height: '50')
+            span.title
+              = item.brand
+            p
+              = item.model
+              .red-text
+                = "#{item.price} #{item.currency.upcase}"
+            = link_to cart_item_path(item.id), method: :delete, class: 'secondary-content' do
+              i.material-icons.medium delete_forever
+      h5.mt-3.right-align
+        = "#{t('cart.total')} #{@data.total_in_cart}"
+
+    - else
+      .col.s6
+        p.has-text-centered.is-size-6
+          = t('items.no_items')

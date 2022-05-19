@@ -7,7 +7,8 @@ en:
     stop_date: 'Last Cancellation: %{datetime}'
 
   session:
-    profile: Profile
+    admin_profile: Admin Profile
+    user_profile: User Profile
     login: Log in
     logout: Log Out
     signup: Sign up
@@ -15,11 +16,11 @@ en:
     confirm: Didn't receive confirmation instructions?
     receive: Didn't receive unlock instructions?
     resend: Resend confirmation instructions
-    signinwith: Sign in with
-    newpass: New password
-    confirmnewpass: Confirm new password
-    changepass: Change my password
-    sendreset: Send me reset password instructions
+    sign_in_with: Sign in with
+    new_pass: New password
+    confirm_new_pass: Confirm new password
+    change_pass: Change my password
+    send_reset: Send me reset password instructions
     delete_acc: Delete my account
     sure: Are you sure you want to delete your account?
     edit: Edit profile
@@ -29,6 +30,12 @@ en:
     unlock: Resend unlock instructions
     back: back
     confirm_delete: Yes, I still want to do it!
+
+  cart:
+    title: Your shopping cart
+    add: The item has been added to the shopping cart
+    delete: The item has been removed from the shopping cart
+    total: "Total amount:"
 
   items:
     nav: Watches
@@ -42,7 +49,7 @@ en:
       bracelet: Bracelet Material
       movement: Movement Type
       external_id: External ID
-      no_items: No items
+    no_items: No items
     title_sort: Sorting
     title_filter: Filtering
     search_hint:
@@ -94,3 +101,4 @@ en:
         - Quartz
         - Tough Solar
         - Module
+  error: Oops...Something went wrong

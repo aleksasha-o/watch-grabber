@@ -1,12 +1,13 @@
 # frozen_string_literal: true
 
 describe Items::Index do
-  subject { described_class.new(params: params) }
+  subject { described_class.new(params, user) }
 
   let!(:item1) { create(:item, brand: 'Rolex', model: 'Datejust', price: '10') }
   let!(:item2) { create(:item, brand: 'Autodromo', price: '20') }
   let!(:item3) { create(:item, brand: 'Cartier', price: '5') }
   let(:params) { {} }
+  let(:user) { 1 }
 
   describe '#items' do
     context 'without params' do
