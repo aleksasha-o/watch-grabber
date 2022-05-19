@@ -18,14 +18,14 @@ module Items
     end
 
     def default_min_price
-      Item.pluck(:price)&.min&.round
+      Item.minimum(:price)
     end
 
     def default_max_price
-      Item.pluck(:price)&.max&.round
+      Item.maximum(:price)
     end
 
-    def item_in_cart?(current_item)
+    def in_cart?(current_item)
       @user.present? && item_ids.include?(current_item.id)
     end
 

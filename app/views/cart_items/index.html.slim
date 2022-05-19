@@ -13,7 +13,7 @@
               = item.model
               .red-text
                 = "#{item.price} #{item.currency.upcase}"
-            = link_to cart_items_path(item_id: item.id), method: :delete, class: 'secondary-content' do
+            = link_to cart_item_path(item.id), method: :delete, class: 'secondary-content' do
               i.material-icons.medium delete_forever
       h5.mt-3.right-align
         = "#{t('cart.total')} #{@data.total_in_cart}"

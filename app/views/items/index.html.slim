@@ -27,8 +27,8 @@
             th
               =
         - @data.items.each do |item|
-            tr class="#{'grey-text' if @data.item_in_cart?(item)}"
-              td style="#{'opacity: 0.5;' if @data.item_in_cart?(item)}"
+            tr class="#{'grey-text' if @data.in_cart?(item)}"
+              td style="#{'opacity: 0.5;' if @data.in_cart?(item)}"
                 = item.image_uri.present? ? image_tag(item.image_uri, height: '200', class: 'circle materialboxed') : image_pack_tag('placoholder.png', height: '200')
               td
                 = item.brand
@@ -48,7 +48,7 @@
                 = item.movement_type
               td
                 - if user_signed_in?
-                  = link_to cart_items_path(item_id: item.id, user_id: current_user.id), method: :post, class: "btn waves-effect #{'disabled' if @data.item_in_cart?(item)}" do
+                  = link_to cart_items_path(item_id: item.id, user_id: current_user.id), method: :post, class: "btn waves-effect #{'disabled' if @data.in_cart?(item)}" do
                     i.material-icons add_shopping_cart
                 - else
                   = link_to cart_items_path, class: "btn waves-effect " do
