@@ -8,10 +8,10 @@ class CartItemsController < ApplicationController
   end
 
   def create
-    if CartItem.create(cart_item_params)
-      redirect_to items_path, notice: t('cart.add')
-    else
+    if CartItem.create(cart_item_params).errors.any?
       redirect_to items_path, alert: t('error')
+    else
+      redirect_to items_path, notice: t('cart.add')
     end
   end
 

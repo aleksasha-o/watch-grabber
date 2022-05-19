@@ -18,35 +18,33 @@ describe CartItemsController, type: :controller do
   end
 
   describe '#create with correct params' do
-    subject { post :create, params: { user_id: current_user.id, item_id: current_item.id } }
+    subject { post :create, params: { item_id: current_item.id, user_id: current_user.id } }
 
     it { expect { subject }.to change(CartItem, :count).by(1) }
 
     context 'after create' do
       before { subject }
 
-      it { expect(assigns(:cart_item)).to have_attributes(user_id: current_user.id, item_id: current_item.id) }
       it { expect(controller).to set_flash[:notice].to(I18n.t('cart.add')) }
       it { is_expected.to redirect_to(items_path) }
     end
   end
 
   describe '#create with wrong params' do
-    subject { post :create, params: { user_id: current_user.id + 1, item_id: current_item.id + 1 } }
+    subject { post :create, params: { item_id: current_item.id + 1, user_id: current_user.id + 1 } }
 
     it { expect { subject }.not_to change(CartItem, :count) }
 
     context 'after create' do
       before { subject }
 
-      it { expect(assigns(:cart_item)).not_to have_attributes(user_id: current_user.id, item_id: current_item.id) }
       it { expect(controller).to set_flash[:alert].to(I18n.t('error')) }
       it { is_expected.to redirect_to(items_path) }
     end
   end
 
   describe '#destroy' do
-    subject { delete :destroy, params: { item_id: current_item.id } }
+    subject { delete :destroy, params: { id: current_item.id } }
 
     before { create(:cart_item, user_id: current_user.id, item_id: current_item.id) }
 

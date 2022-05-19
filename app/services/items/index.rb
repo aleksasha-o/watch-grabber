@@ -32,7 +32,7 @@ module Items
     private
 
     def item_ids
-      @item_ids ||= CartItem.where(user_id: @user.id).pluck(:item_id)
+      @item_ids ||= @user.item_ids
     end
   end
 end
