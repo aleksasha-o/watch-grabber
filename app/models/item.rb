@@ -17,7 +17,7 @@ class Item < ApplicationRecord
   scope :by_brands, lambda { |brands|
     return all if brands.blank?
 
-    where(brands.map { |brand| "brand ILIKE '%#{brand}%'" }.join(' OR '))
+    where(brands.map { |brand| sanitize_sql(['brand ILIKE ?', "%#{brand}%"]) }.join(' OR '))
   }
   scope :by_model, ->(model) { model.blank? ? all : where('model ILIKE ?', "%#{model}%") }
   scope :by_dial_color, ->(dial_color) { dial_color.blank? ? all : where('dial_color ILIKE ?', "%#{dial_color}%") }
