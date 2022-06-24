@@ -62,6 +62,7 @@ group :test do
   gem 'rails-controller-testing'
   gem 'rspec-sidekiq'
   gem 'shoulda-matchers'
+  gem 'simplecov', require: false, group: :test
   gem 'webdrivers'
   gem 'webmock'
 end
